@@ -36,11 +36,12 @@ export default function Sidebar(props: { isShow: boolean; isShowMd: boolean }) {
       <div className="d-none d-md-flex align-items-center justify-content-space-between bg-white m-2 pb-1 rounded-2">
         {/* svg from assets/brand/coreui.svg */}
         <img
-          src="/assets/brand/coreui.svg"
+          src="/assets/brand/coreui2.png"
           alt="CoreUI Logo"
-          width={305}
+          width={180}
           height={35}
           className="me-2"
+          style={{marginLeft: "30px"}}
         />
           {/* <HeaderProfileNav />
           <div className="color-black">Agrim Somani</div> */}

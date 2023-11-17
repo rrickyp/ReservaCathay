@@ -87,10 +87,10 @@ const Login: NextPage = () => {
 
                     <Row>
                       <Col xs={6}>
-                        <Button className="px-4" variant="primary" type="submit" disabled={submitting}>Login</Button>
+                        <Button className="px-4" style={{ backgroundColor: '#00645A' }} variant="primary" type="submit" disabled={submitting}>Login</Button>
                       </Col>
                       <Col xs={6} className="text-end">
-                        <Button className="px-0" variant="link" type="submit">
+                        <Button className="px-0" variant="link" type="submit" style={{ color: '#00645A' }}>
                           Forgot
                           password?
                         </Button>
@@ -101,13 +101,13 @@ const Login: NextPage = () => {
               </Col>
               <Col
                 md={5}
-                className="bg-primary text-white d-flex align-items-center justify-content-center p-5"
+                style={{ backgroundColor: '#00645A' }}
+                className="text-white d-flex align-items-center justify-content-center p-5"
               >
                 <div className="text-center">
                   <h2>Sign up</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                    Please contact your Cathay Pacific team to help you Sign Up for an account.
                   </p>
                   <Link href="/register">
                     <button className="btn btn-lg btn-outline-light mt-3" type="button">

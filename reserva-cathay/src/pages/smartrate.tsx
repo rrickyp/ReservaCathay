@@ -42,343 +42,68 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement
 
 const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
 
+const dummydata = [
+    ["Yiorgos Avraamu","12th November, 2023","Business Class","Rarely (12%)","Very Frequent (> than 50)","4.89"],
+    ["Avram Tarasios","14th November, 2023","First Class","Rarely (7%)","Frequent (30-40)","4.94"],
+    ["Quintin Ed","06th November, 2023","Economy Class","Frequent(67%)","Sometimes (10-20)","2.49"],
+    ["Enéas Kwadwo","11th November, 2023","Premium Economy","Rarely(9%)","Often (20-30)","3.99"],
+    ["Agapetus Tadeáš","25th October, 2023","Business Class","Sometimes(27%)","Frequent (30-40)","4.74"],
+    ["Friderik Dávid","31st October, 2023", "Premium Economy", "Often (51%)","Sometimes (10-20)","3.25"]
+]
+
+const errorlogs = [
+    ["59 mins ago.","System","[ERROR] - AI model run on 18/11/23 encountered an error. Details:..."],
+    ["3 hours ago","System","AI model run on 17/11/23 for Flight CX111. Performance metrics: Accuracy- 0.87, RMSE- 0.08"],
+    ["2 days ago.","Mark Huston","[INFO] - Edited Customer List for Flight CX288 at 05:03:00PM, 16/11/23."],
+    ["2 days ago.","Nancy Wong","[INFO] - Invited you to review Flight CX312 Customer List for Customer ID 31D."],
+]
+
 const Home: NextPage = () => (
   <AdminLayout>
-    <div className="row">
-      <div className="col-sm-6 col-lg-3">
-        <Card style={{backgroundColor: "#00645A"}} text="white" className="mb-4">
-          <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
-            <div>
-              <div className="fs-6 fw-semibold">
-                CX4432
-                <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (12.4%
-                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />
-                  )
-                </span>
-              </div>
-              <div style={{fontSize: "13px"}}>02:00:00PM, Today</div>
-            </div>
-            <Dropdown align="end">
-              <Dropdown.Toggle
-                as="button"
-                bsPrefix="btn"
-                className="btn-link rounded-0 text-white shadow-none p-0"
-                id="dropdown-chart1"
-              >
-                <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Details</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">PredictAir Data</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">SmartRate Data</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
-            <Line
-              options={{
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-                maintainAspectRatio: false,
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                      drawBorder: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    min: 30,
-                    max: 89,
-                    display: false,
-                    grid: {
-                      display: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                },
-                elements: {
-                  line: {
-                    borderWidth: 1,
-                    tension: 0.4,
-                  },
-                  point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4,
-                  },
-                },
-              }}
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: 'transparent',
-                  borderColor: 'rgba(255,255,255,.55)',
-                  data: [65, 59, 84, 84, 51, 55, 40],
-                }],
-              }}
-            />
-          </div>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-3">
-        <Card text="black" className="mb-4" style={{backgroundColor: "#F1F1F1"}}>
-          <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
-            <div>
-              <div className="fs-6 fw-semibold">
-                CX7894
-                <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (40.9%
-                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />
-                  )
-                </span>
-              </div>
-              <div style={{fontSize: "13px"}}>03:30:00PM, Today</div>
-            </div>
-            <Dropdown align="end">
-              <Dropdown.Toggle
-                as="button"
-                bsPrefix="btn"
-                className="btn-link rounded-0 text-black shadow-none p-0"
-                id="dropdown-chart2"
-              >
-                <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Details</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">PredictAir Data</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">SmartRate Data</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
-            <Line
-              options={{
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-                maintainAspectRatio: false,
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                      drawBorder: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    min: -9,
-                    max: 39,
-                    display: false,
-                    grid: {
-                      display: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                },
-                elements: {
-                  line: {
-                    borderWidth: 1,
-                  },
-                  point: {
-                    radius: 4,
-                    hitRadius: 10,
-                    hoverRadius: 4,
-                  },
-                },
-              }}
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  data: [1, 18, 9, 17, 34, 22, 11],
-                }],
-              }}
-            />
-          </div>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-3">
-        <Card text="white" className="mb-4" style={{backgroundColor: '#00645A'}}>
-          <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
-            <div>
-              <div className="fs-6 fw-semibold">
-                CX3284
-                <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (23.6%
-                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />
-                  )
-                </span>
-              </div>
-              <div style={{fontSize: "13px"}}>05:40:00PM, Today</div>
-            </div>
-            <Dropdown align="end">
-              <Dropdown.Toggle
-                as="button"
-                bsPrefix="btn"
-                className="btn-link rounded-0 text-white shadow-none p-0"
-                id="dropdown-chart4"
-              >
-                <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Details</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">PredictAir Data</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">SmartRate Data</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
-            <Bar
-              options={{
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                      drawTicks: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    grid: {
-                      display: false,
-                      drawBorder: false,
-                      drawTicks: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                },
-              }}
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April'],
-                datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: 'rgba(255,255,255,.2)',
-                  borderColor: 'rgba(255,255,255,.55)',
-                  data: [78, 81, 80, 45, 34, 12, 40, 85, 65, 23, 12, 98, 34, 84, 67, 82],
-                  barPercentage: 0.6,
-                }],
-              }}
-            />
-          </div>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-3">
-        <Card text="black" className="mb-4" style={{backgroundColor: "#F1F1F1"}}>
-          <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
-            <div>
-              <div className="fs-6 fw-semibold">
-                CX8921
-                <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (84.7%
-                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />
-                  )
-                </span>
-              </div>
-              <div style={{fontSize: "13px"}}>09:40:00PM, Today</div>
-            </div>
-            <Dropdown align="end">
-              <Dropdown.Toggle
-                as="button"
-                bsPrefix="btn"
-                className="btn-link rounded-0 text-black shadow-none p-0"
-                id="dropdown-chart3"
-              >
-                <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Details</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">PredictAir Data</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">SmartRate Data</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
-            <Line
-              options={{
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-                maintainAspectRatio: false,
-                scales: {
-                  x: {
-                    display: false,
-                  },
-                  y: {
-                    display: false,
-                  },
-                },
-                elements: {
-                  line: {
-                    borderWidth: 2,
-                    tension: 0.4,
-                  },
-                  point: {
-                    radius: 0,
-                    hitRadius: 10,
-                    hoverRadius: 4,
-                  },
-                },
-              }}
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: '#E4E1E0 ',
-                  borderColor: 'black',
-                  data: [78, 81, 80, 45, 34, 12, 40],
-                  fill: true,
-                }],
-              }}
-            />
-          </div>
-        </Card>
-      </div>
-    </div>
-    
-
-    {/* header section for model 1 */}
+    {/* header section for model 2 */}
 
     <div>
-      <h4>AI Model 1 Info: CathayPredictAir</h4>
-      <p style={{marginTop: "-8px"}}>Recent run: For Flight CX2118 at 03:00:00AM, Today.</p>
+      <h4>AI Model 2 Info: SmartRate.AI</h4>
+      <p style={{marginTop: "-8px", color: "red"}}>Model 2 currently running for CX1851 from 11:00:00AM, Today.</p>
+    </div>
+
+    <div className="table-responsive" style={{marginBottom: "20px"}}>
+        <table className="table border mb-0">
+        <thead className="table-light fw-semibold">
+            <tr className="align-middle">
+            {/* <th className="text-center">
+                <FontAwesomeIcon icon={faUsers} fixedWidth />
+            </th> */}
+            <th className="text-left">Flyer Name</th>
+            <th className="text-left">Ticket Class</th>
+            <th className="text-left">No-Show/Cancel</th>
+            <th className="text-left">Flight Freq.</th>
+            <th className="text-left">Priority Points (/5)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {dummydata.map((data, index) => (
+            <tr className="align-middle" key={index}>
+                <td>
+                <div>{data[0]}</div>
+                <div className="small text-black-50">
+                    <span></span>Booked on: {data[1]}
+                </div>
+                </td>
+                <td>
+                <div className="clearfix">
+                    <div className="float-start">
+                    <div className="fw-semibold">{data[2]}</div>
+                    </div>
+                </div>
+                </td>
+                <td className="text-left">{data[3]}</td>
+                <td className="text-left">{data[4]}</td>
+                <td>{data[5]}</td>
+            </tr>
+            ))}
+        </tbody>
+        </table>
     </div>
 
     <div className='row'>
@@ -387,8 +112,8 @@ const Home: NextPage = () => (
           <Card.Body>
             <div className="d-flex justify-content-between">
               <div>
-                <h4 className="mb-0">Optimal Customer Number</h4>
-                <div className="small text-black-50">Flight CX118: From HKG-SIN</div>
+                <h4 className="mb-0">Customer Ratings Summary (CX1851[Recent])</h4>
+                <div className="small text-black-50">Flight Schedule: 20th November, 12:00:00PM</div>
               </div>
               <div className="d-none d-md-block">
                 <ButtonGroup aria-label="Toolbar with buttons" className="mx-3">
@@ -436,40 +161,24 @@ const Home: NextPage = () => (
             >
               <Line
                 data={{
-                  labels: ['270', '280', '290', '300', '310', '320', '330'],
+                  labels: ['1', '2', '3', '4', '5'],
                   datasets: [{
-                    label: 'CX118',
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    borderColor: 'rgba(13, 202, 240, 1)',
+                    label: 'Priority Rating',
+                    backgroundColor: '#C0DEDB',
+                    borderColor: '#00645A',
                     pointHoverBackgroundColor: '#fff',
                     borderWidth: 2,
                     data: [
-                      18,
-                      41,
-                      52,
-                      72,
-                      21,
-                      91,
-                      42
+                      42,
+                      43,
+                      58,
+                      139,
+                      82,
                     ],
                     fill: true,
                   }, {
-                    label: 'CX218',
-                    borderColor: 'rgba(25, 135, 84, 1)',
-                    pointHoverBackgroundColor: '#fff',
-                    borderWidth: 2,
-                    data: [
-                      25,
-                      26,
-                      88,
-                      12,
-                      11,
-                      21,
-                      11,
-                    ],
-                  }, {
                     label: 'Borderline',
-                    borderColor: 'rgba(220, 53, 69, 1)',
+                    borderColor: 'blue',
                     pointHoverBackgroundColor: '#fff',
                     borderWidth: 1,
                     borderDash: [8, 5],
@@ -495,7 +204,7 @@ const Home: NextPage = () => (
                     x: {
                       title: {
                         display: true,
-                        text: 'Number of flights with x tickets', // Add your X-Axis label here
+                        text: 'Priority Ratings for Customers', // Add your X-Axis label here
                         color: '#333', // You can customize the color
                       },
                       grid: {
@@ -505,11 +214,11 @@ const Home: NextPage = () => (
                     y: {
                       title: {
                         display: true,
-                        text: 'Number of tickets', // Add your X-Axis label here
+                        text: 'Number of Customers with Rating X', // Add your X-Axis label here
                         color: '#333', // You can customize the color
                       },
                       beginAtZero: false,
-                      max: 100,
+                      max: 150,
                       ticks: {
                         maxTicksLimit: 5,
                         stepSize: Math.ceil(250 / 5),
@@ -518,7 +227,7 @@ const Home: NextPage = () => (
                   },
                   elements: {
                     line: {
-                      tension: 0.4,
+                      tension: 0,
                     },
                     point: {
                       radius: 0,
@@ -531,55 +240,6 @@ const Home: NextPage = () => (
               />
             </div>
           </Card.Body>
-          {/* <Card.Footer>
-            <div className="row row-cols-1 row-cols-md-5 text-center">
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Visits</div>
-                <div className="fw-semibold">29.703 Users (40%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="success"
-                  now={40}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Unique</div>
-                <div className="fw-semibold">24.093 Users (20%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="info"
-                  now={20}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Page views</div>
-                <div className="fw-semibold">78.706 Views (60%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="warning"
-                  now={60}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">New Users</div>
-                <div className="fw-semibold">22.123 Users (80%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="danger"
-                  now={80}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Bounce Rate</div>
-                <div className="fw-semibold">40.15%</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="primary"
-                  now={40}
-                />
-              </div>
-            </div>
-          </Card.Footer> */}
         </Card>
       </div>
       <div className='col-lg-4 col-md-4'>
@@ -587,365 +247,31 @@ const Home: NextPage = () => (
               <table className="table border mb-0">
                 <thead className="table-light fw-semibold">
                   <tr className="align-middle">
-                    <th className="text-left">Flights</th>
-                    <th>Extra Tickets</th>
-                    <th aria-label="Action" />
+                    <th className="text-left">Error/Info Logs</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX118</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            329 Tickets - 91 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="success" now={91} />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">12</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user1"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX218</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            290 Tickets - 88 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="info" now={84} />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">18</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user2"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX917</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            294 Tickets - 72 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="warning" now={74} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">15</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user3"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX623</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            294 Tickets - 99 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="danger" now={98} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">21</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user4"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX547</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            284 Tickets - 57 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="info" now={62} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">14</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user5"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX711</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            302 Tickets - 71 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="success" now={74} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">17</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user6"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
+                    {errorlogs && errorlogs.map((data,index) => (
+                        <tr className="align-middle">
+                        <td>
+                            <div className="clearfix">
+                            <div className="float-start">
+                                <div className="fw" style={{fontSize: "15px"}}>{data[2]}</div>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div className="small text-black-50">{data[0]}</div>
+                            <div className="small text-black-80">{data[1]}</div>
+                        </td>
+                        </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
       </div>
     </div>
 
-
-    {/* <div className="row">
-      <div className="col-sm-6 col-lg-4">
-        <Card
-          className="mb-4"
-          style={{ '--bs-card-cap-bg': '#3b5998' } as React.CSSProperties}
-        >
-          <Card.Header className="d-flex justify-content-center align-items-center">
-            <FontAwesomeIcon
-              icon={faFacebookF}
-              fixedWidth
-              size="3x"
-              className="my-4 text-white"
-            />
-          </Card.Header>
-          <Card.Body>
-            <div className="row text-center">
-              <div className="col">
-                <div className="fs-5 fw-semibold">89k</div>
-                <div className="text-uppercase text-black-50 small">friends</div>
-              </div>
-              <div className="vr p-0" />
-              <div className="col">
-                <div className="fs-5 fw-semibold">459</div>
-                <div className="text-uppercase text-black-50 small">feeds</div>
-              </div>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-4">
-        <Card
-          className="mb-4"
-          style={{ '--bs-card-cap-bg': '#00aced' } as React.CSSProperties}
-        >
-          <Card.Header className="d-flex justify-content-center align-items-center">
-            <FontAwesomeIcon
-              icon={faTwitter}
-              fixedWidth
-              size="3x"
-              className="my-4 text-white"
-            />
-          </Card.Header>
-          <Card.Body>
-            <div className="row text-center">
-              <div className="col">
-                <div className="fs-5 fw-semibold">973k</div>
-                <div className="text-uppercase text-black-50 small">followers</div>
-              </div>
-              <div className="vr p-0" />
-              <div className="col">
-                <div className="fs-5 fw-semibold">1.792</div>
-                <div className="text-uppercase text-black-50 small">tweets</div>
-              </div>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-4">
-        <Card
-          className="mb-4"
-          style={{ '--bs-card-cap-bg': '#4875b4' } as React.CSSProperties}
-        >
-          <Card.Header className="d-flex justify-content-center align-items-center">
-            <FontAwesomeIcon
-              icon={faLinkedinIn}
-              fixedWidth
-              size="3x"
-              className="my-4 text-white"
-            />
-          </Card.Header>
-          <Card.Body>
-            <div className="row text-center">
-              <div className="col">
-                <div className="fs-5 fw-semibold">500+</div>
-                <div className="text-uppercase text-black-50 small">contacts</div>
-              </div>
-              <div className="vr p-0" />
-              <div className="col">
-                <div className="fs-5 fw-semibold">292</div>
-                <div className="text-uppercase text-black-50 small">feeds</div>
-              </div>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-
-    </div> */}
-
-    <div>
-      <h4>AI Model 2 Info: SmartRateAI</h4>
-      <p style={{marginTop: "-8px"}}>Recent run: For Flight CX1851A at 04:30:00AM, Today.</p>
-    </div>
     <div className="row">
       <div className="col-md-12">
         <Card>

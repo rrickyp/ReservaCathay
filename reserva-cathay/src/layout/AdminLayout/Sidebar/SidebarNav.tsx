@@ -135,11 +135,11 @@ export default function SidebarNav() {
         <small className="ms-auto"><Badge bg="info" className="ms-auto">NEW</Badge></small>
       </SidebarNavItem>
       <SidebarNavTitle>Model</SidebarNavTitle>
-      <SidebarNavItem icon={faChartPie} href="/">
+      <SidebarNavItem icon={faChartPie} href="/predictair">
       PredictAir.AI
         <small className="ms-auto"></small>
       </SidebarNavItem>
-      <SidebarNavItem icon={faChartPie} href="/">
+      <SidebarNavItem icon={faChartPie} href="/smartrate">
       SmartRate.AI
         <small className="ms-auto"></small>
       </SidebarNavItem>

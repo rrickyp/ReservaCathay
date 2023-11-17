@@ -587,7 +587,7 @@ const Home: NextPage = () => (
               <table className="table border mb-0">
                 <thead className="table-light fw-semibold">
                   <tr className="align-middle">
-                    <th className="text-left">Flights</th>
+                    <th className="text-center">Flights</th>
                     <th>Extra Tickets</th>
                     <th aria-label="Action" />
                   </tr>

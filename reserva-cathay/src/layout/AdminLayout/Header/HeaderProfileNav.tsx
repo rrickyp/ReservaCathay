@@ -56,7 +56,7 @@ export default function HeaderProfileNav() {
               width={35}
               height={35}
               className="rounded-circle"
-              src="/assets/img/avatars/8.jpg"
+              src="/assets/img/avatars/10.png"
               alt="user@email.com"
             />
             <div style={{
