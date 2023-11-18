@@ -1,7 +1,7 @@
 # ReservaCathay <img src="reserva-cathay/public/assets/brand/logo.png" width="50"/>
 
 
-## How to Install
+## How to Install the Staff Application
 1. Go to reserva-cathay folder 
 ```bash
 cd reserva-cathay
