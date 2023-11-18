@@ -153,7 +153,7 @@ export default function SidebarNav() {
         <SidebarNavItem href="#">Last Month</SidebarNavItem>
       </SidebarNavGroup>
       <SidebarNavItem icon={faCalculator} href="#">Flight History</SidebarNavItem>
-      <SidebarNavItem icon={faPencil} href="#">Edit Flight Data</SidebarNavItem>
+      <SidebarNavItem icon={faPencil} href="/editsmartrate">Edit Flight Data</SidebarNavItem>
       <SidebarNavTitle>Customer</SidebarNavTitle>
 
       <SidebarNavGroup toggleIcon={faLocationArrow} toggleText="Complains">

@@ -36,7 +36,8 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
 import React from 'react'
-import { AdminLayout } from '@layout'
+import { AdminLayout } from '@layout';
+import { useRouter } from 'next/router';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
@@ -57,6 +58,8 @@ const errorlogs = [
     ["2 days ago.","Mark Huston","[INFO] - Edited Customer List for Flight CX288 at 05:03:00PM, 16/11/23."],
     ["2 days ago.","Nancy Wong","[INFO] - Invited you to review Flight CX312 Customer List for Customer ID 31D."],
 ]
+
+
 
 const Home: NextPage = () => (
   <AdminLayout>
