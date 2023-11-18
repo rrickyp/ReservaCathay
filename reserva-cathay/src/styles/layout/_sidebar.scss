@@ -17,7 +17,9 @@ $sidebar-overlay-z-index: 1025;
 :root {
   --sidebar-width: 16rem;
 }
-
+.MuiInputBase-root {
+  flex-direction: row-reverse;
+}
 .sidebar {
   flex: 0 0 var(--sidebar-width);
   width: var(--sidebar-width);
