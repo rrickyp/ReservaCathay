@@ -51,22 +51,11 @@ export default function Header(props: HeaderProps) {
         <div className="header-nav ms-auto">
           <img src="/assets/brand/logo.png" alt="CoreUI Logo" width={35} height={35} />
         </div>
-        <div className="header-nav ms-auto">
-          <HeaderNotificationNav />
-        </div>
         <div className="header-nav ms-2">
           <HeaderProfileNav />
         </div>
       </Container>
-      {/* <div className="header-divider border-top my-2 mx-sm-n2" /> */}
-      {/* use datepicker which default is today*/}
-      {/* <DatePicker defaultValue={dayjs()} /> */}
-      {/* create selection */}
-      {/* <Select defaultValue="CX4432" style={{ width: 120, marginLeft: 5}}>
-        <Select.Option value="CX4432">CX118</Select.Option>
-        <Select.Option value="CX7894">CX218</Select.Option>
-        <Select.Option value="CX3284">CX346</Select.Option>
-      </Select> */}
+
 
 
 

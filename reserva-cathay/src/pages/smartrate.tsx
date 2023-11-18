@@ -41,6 +41,8 @@ import { useRouter } from 'next/router';
 import { Table } from '@components/Table';
 import { useRef } from 'react';
 
+import { PreferenceTable } from '@components/PreferenceTable';
+
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
 interface Option {
@@ -75,39 +77,39 @@ const Home: NextPage = () => {
 
   const [remunerationData, setRemunerationData] = useState<Option[]>([
     {
-      optionName: 'Performance Bonus',
-      description: 'Bonus based on individual and team performance.',
+      optionName: 'Flight Ticket to: ___________',
+      description: 'Specially tailored flight based on user preference',
+      amount: '$2,000',
+    },
+    {
+      optionName: 'Cathay Shop Product Voucher for: ____',
+      description: 'Use customer interests; gift Cathay Shop products.',
       amount: '$1,000',
     },
     {
-      optionName: 'Sales Commission',
-      description: 'Commission for each sale made.',
-      amount: '$500 + 5% of sale amount',
+      optionName: 'Concert Ticket for: ___________',
+      description: 'Concert tickets targetted for music lovers.',
+      amount: '$1,500',
     },
     {
-      optionName: 'Annual Salary',
-      description: 'Fixed salary paid annually.',
-      amount: '$50,000',
+      optionName: 'Spa/Relaxation Activity to: ___________',
+      description: 'Sponsored, personalized relaxation schemes',
+      amount: '$1,500',
     },
     {
-      optionName: 'Profit Sharing',
-      description: 'Share of company profits distributed among employees.',
-      amount: 'Varies based on company performance',
+      optionName: 'Carnival Tickets to: ___________',
+      description: 'Tailored tickets for what customers want.',
+      amount: '$1,200',
     },
     {
-      optionName: 'Profit Sharing',
-      description: 'Share of company profits distributed among employees.',
-      amount: 'Varies based on company performance',
+      optionName: 'Spa/Relaxation Activity to: ___________',
+      description: 'Sponsored, personalized relaxation schemes',
+      amount: '$1,500',
     },
     {
-      optionName: 'Profit Sharing',
-      description: 'Share of company profits distributed among employees.',
-      amount: 'Varies based on company performance',
-    },
-    {
-      optionName: 'Profit Sharing',
-      description: 'Share of company profits distributed among employees.',
-      amount: 'Varies based on company performance',
+      optionName: 'Cathay Shop Product Voucher for: ____',
+      description: 'Use customer interests; gift Cathay Shop products.',
+      amount: '$1,000',
     },
 
   ]);
@@ -182,10 +184,11 @@ const Home: NextPage = () => {
 
         </div>
     </div>
-    <Table columns={['Passenger Data Input','Models Selected Outputs','Customers Selected Output']} data={        
+    <PreferenceTable columns={['Passenger Data Input','Models Selected Outputs','Customers Selected Output']} data={        
           [["Nationalty:Indian", "Age:25", "Gender:Male", "Purpose:Tourism","Interest:Shoes,Music,Partying","Adidas Voucher, Speaker, Wine","Wine"],
           ["Nationalty:Chinese", "Age:37", "Gender:Female", "Purpose:Tourism","Interest:Beauty,Travelling,Spa","Cosmetic Voucher, Business Ticket to Japan, Spa & Message","Business Ticket to Japan"],
     ]}/>
+    
   </AdminLayout>
 )}
 

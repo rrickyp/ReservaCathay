@@ -61,24 +61,31 @@ interface Props {
             <tbody>
               {data.map((rowData, index) => (
                 <tr className="align-middle" key={index}>
-                  <td className='text-center'>
-                    <div>{rowData[0]}</div>
-
+                  <td className="text-center">
+                    {/* Disabled Dropdown for row[0] */}
+                    <select className="form-select">
+                        <option key={index} value={index.toString()}>
+                          {rowData[0]}
+                        </option>
+                        <option key={index} value={index.toString()}>
+                          {rowData[1]}
+                        </option>
+                        <option key={index} value={index.toString()}>
+                          {rowData[2]}
+                        </option>
+                        <option key={index} value={index.toString()}>
+                          {rowData[3]}
+                        </option>
+                        <option key={index} value={index.toString()}>
+                          {rowData[4]}
+                        </option>
+                    </select>
                   </td>
                   <td className='text-center'>
-                    <div>{rowData[1]}</div>
+                    <div>{rowData[5]}</div>
 
                   </td>
-                  <td className='text-center'>
-                    <div className="clearfix">
-
-                        <div className="fw-semibold">{rowData[2]}</div>
-
-                    </div>
-                  </td>
-                  <td className="text-center">{rowData[3]}</td>
-                  <td className="text-center">{rowData[4]}</td>
-                  <td>{rowData[5]}</td>
+                  <td className='text-center'>{rowData[6]}</td>
                 </tr>
               ))}
             </tbody>
