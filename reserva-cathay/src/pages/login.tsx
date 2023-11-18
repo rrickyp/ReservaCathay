@@ -22,7 +22,7 @@ const Login: NextPage = () => {
       return redirect.toString()
     }
 
-    return '/'
+    return '/predictair'
   }
 
   const login = async (e: SyntheticEvent) => {

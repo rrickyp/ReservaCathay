@@ -51,6 +51,9 @@ export default function Header(props: HeaderProps) {
         <div className="header-nav ms-auto">
           <img src="/assets/brand/logo.png" alt="CoreUI Logo" width={35} height={35} />
         </div>
+        <div className="header-nav ms-auto">
+      
+        </div>
         <div className="header-nav ms-2">
           <HeaderProfileNav />
         </div>

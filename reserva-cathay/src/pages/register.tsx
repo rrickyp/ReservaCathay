@@ -21,7 +21,7 @@ const Register: NextPage = () => {
       return redirect.toString()
     }
 
-    return '/'
+    return '/predictair'
   }
 
   const register = async (e: SyntheticEvent) => {

@@ -136,7 +136,7 @@ export default function SidebarNav() {
     <ul className="list-unstyled">
       <SidebarNavTitle>Tech Staff</SidebarNavTitle>
 
-      <SidebarNavItem icon={faChartPie} href="/predictair">
+      <SidebarNavItem icon={faChartPie} href="/">
       PredictAir.AI
         <small className="ms-auto"></small>
       </SidebarNavItem>
