@@ -47,6 +47,6 @@ cd predictAir-main
 The model is a feed-forward neural network with an input layer, a series of computational layers + dropout layers, and 1 output layer. 
 
 The model has been saved and used to host on Streamlit with a simple interface to allow the staff to test the model and get quick results for review.
-<br>
+<br></br>
 <img width="1470" alt="Screenshot 2023-11-19 at 7 43 44 AM" src="https://github.com/rrickyp/ReservaCathay/assets/86021138/393f0e65-3831-4881-b174-f5dbb42d66b0">
 
