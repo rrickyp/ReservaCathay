@@ -1,6 +1,6 @@
-import type { NextPage } from 'next'
-import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { NextPage } from "next";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowDown,
   faArrowUp,
@@ -10,11 +10,15 @@ import {
   faSearch,
   faUsers,
   faVenus,
-} from '@fortawesome/free-solid-svg-icons'
+} from "@fortawesome/free-solid-svg-icons";
 import {
-  Button, ButtonGroup, Card, Dropdown, ProgressBar,
-} from 'react-bootstrap'
-import { Bar, Line } from 'react-chartjs-2'
+  Button,
+  ButtonGroup,
+  Card,
+  Dropdown,
+  ProgressBar,
+} from "react-bootstrap";
+import { Bar, Line } from "react-chartjs-2";
 import {
   BarElement,
   CategoryScale,
@@ -24,7 +28,7 @@ import {
   LineElement,
   PointElement,
   Tooltip,
-} from 'chart.js'
+} from "chart.js";
 import {
   faCcAmex,
   faCcApplePay,
@@ -42,9 +46,18 @@ import  {Table}  from '@components/Table';
 
 import { DatePicker, Select } from 'antd';
 
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Tooltip,
+  Filler
+);
 
-const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
+const random = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
 
 const Home: NextPage = () => {
   const inputStyle = {
@@ -179,8 +192,7 @@ const Home: NextPage = () => {
                 Third-Party Trends
                 <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
                   (40.9%
-                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />
-                  )
+                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />)
                 </span>
               </div>
               <div style={{fontSize: "13px"}}>Third-Party Data to analyze route flight traffic.</div>
@@ -245,13 +257,23 @@ const Home: NextPage = () => {
                 },
               }}
               data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  data: [1, 18, 9, 17, 34, 22, 11],
-                }],
+                labels: [
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                  "July",
+                ],
+                datasets: [
+                  {
+                    label: "My First dataset",
+                    backgroundColor: "black",
+                    borderColor: "black",
+                    data: [1, 18, 9, 17, 34, 22, 11],
+                  },
+                ],
               }}
             />
           </div>
@@ -365,8 +387,10 @@ const Home: NextPage = () => {
           <Card.Body>
             <div className="d-flex justify-content-between">
               <div>
-                <h4 className="mb-0">Optimal Customer Number</h4>
-                <div className="small text-black-50">Flight CX118: From HKG-SIN</div>
+                <h4 className="mb-0">Optimal Number of Tickets</h4>
+                <div className="small text-black-50">
+                  Flight CX118: From HKG-SIN
+                </div>
               </div>
               <div className="d-none d-md-block">
                 <ButtonGroup aria-label="Toolbar with buttons" className="mx-3">
@@ -377,7 +401,12 @@ const Home: NextPage = () => {
                     name="options"
                     autoComplete="off"
                   />
-                  <label className="btn btn-outline-secondary" htmlFor="option1">Day</label>
+                  <label
+                    className="btn btn-outline-secondary"
+                    htmlFor="option1"
+                  >
+                    Day
+                  </label>
                   <input
                     className="btn-check"
                     id="option2"
@@ -399,14 +428,19 @@ const Home: NextPage = () => {
                     name="options"
                     autoComplete="off"
                   />
-                  <label className="btn btn-outline-secondary" htmlFor="option3">Year</label>
+                  <label
+                    className="btn btn-outline-secondary"
+                    htmlFor="option3"
+                  >
+                    Year
+                  </label>
                 </ButtonGroup>
               </div>
             </div>
             <div
               style={{
-                height: '300px',
-                marginTop: '40px',
+                height: "300px",
+                marginTop: "40px",
               }}
             >
               <Line
@@ -456,8 +490,8 @@ const Home: NextPage = () => {
                     x: {
                       title: {
                         display: true,
-                        text: 'Number of flights with x tickets', // Add your X-Axis label here
-                        color: '#333', // You can customize the color
+                        text: "Number of flights with x tickets", // Add your X-Axis label here
+                        color: "#333", // You can customize the color
                       },
                       grid: {
                         drawOnChartArea: false,
@@ -466,8 +500,8 @@ const Home: NextPage = () => {
                     y: {
                       title: {
                         display: true,
-                        text: 'Number of tickets', // Add your X-Axis label here
-                        color: '#333', // You can customize the color
+                        text: "Number of tickets", // Add your X-Axis label here
+                        color: "#333", // You can customize the color
                       },
                       beginAtZero: false,
                       max: 100,
@@ -512,4 +546,4 @@ const Home: NextPage = () => {
   </AdminLayout>
 )}
 
-export default Home
+export default Home;
