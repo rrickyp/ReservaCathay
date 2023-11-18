@@ -32,6 +32,8 @@ import Link from 'next/link'
 type SidebarNavItemProps = {
   href: string;
   icon?: IconDefinition;
+  selected?: number;
+  id?: number;
 } & PropsWithChildren
 
 const SidebarNavItem = (props: SidebarNavItemProps) => {
@@ -39,13 +41,15 @@ const SidebarNavItem = (props: SidebarNavItemProps) => {
     icon,
     children,
     href,
+    selected,
+    id
   } = props
 
   return (
     <Nav.Item>
       <Link href={href} passHref legacyBehavior>
         <Nav.Link className="px-3 py-2 d-flex align-items-center">
-          {icon ? <FontAwesomeIcon className="nav-icon ms-n3" icon={icon} />
+          {icon ? <FontAwesomeIcon className="nav-icon ms-n3"  icon={icon} />
             : <span className="nav-icon ms-n3" />}
           {children}
         </Nav.Link>
@@ -130,30 +134,21 @@ const SidebarNavGroup = (props: SidebarNavGroupProps) => {
 export default function SidebarNav() {
   return (
     <ul className="list-unstyled">
-      <SidebarNavItem icon={faGauge} href="/">
-        Dashboard
-        <small className="ms-auto"><Badge bg="info" className="ms-auto">NEW</Badge></small>
-      </SidebarNavItem>
-      <SidebarNavTitle>Model</SidebarNavTitle>
+      <SidebarNavTitle>Tech Staff</SidebarNavTitle>
+
       <SidebarNavItem icon={faChartPie} href="/predictair">
       PredictAir.AI
         <small className="ms-auto"></small>
       </SidebarNavItem>
       <SidebarNavItem icon={faChartPie} href="/smartrate">
-      SmartRate.AI
+      RewardRight.AI
         <small className="ms-auto"></small>
       </SidebarNavItem>
-      <SidebarNavTitle>FLight</SidebarNavTitle>
-
-      <SidebarNavGroup toggleIcon={faFileLines} toggleText="Flight Lists">
-        <SidebarNavItem href="#">Overview</SidebarNavItem>
-        <SidebarNavItem href="#">Today</SidebarNavItem>
-        <SidebarNavItem href="#">Yesterday</SidebarNavItem>
-        <SidebarNavItem href="#">Last Week</SidebarNavItem>
-        <SidebarNavItem href="#">Last Month</SidebarNavItem>
-      </SidebarNavGroup>
-      <SidebarNavItem icon={faCalculator} href="#">Flight History</SidebarNavItem>
-      <SidebarNavItem icon={faPencil} href="/editsmartrate">Edit Flight Data</SidebarNavItem>
+      <SidebarNavTitle>Airport Staff</SidebarNavTitle>
+      <SidebarNavItem icon={faChartPie} href="/overbook">
+      Overbook
+        <small className="ms-auto"></small>
+      </SidebarNavItem>
       <SidebarNavTitle>Customer</SidebarNavTitle>
 
       <SidebarNavGroup toggleIcon={faLocationArrow} toggleText="Complains">

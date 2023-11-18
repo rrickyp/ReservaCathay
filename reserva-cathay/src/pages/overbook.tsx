@@ -43,21 +43,40 @@ import React from 'react'
 import { AdminLayout } from '@layout';
 import { useRouter } from 'next/router';
 import { useState } from 'react'
-
+import { SiAdidas, SiJbl , SiDior} from "react-icons/si";
+// import List from "./Components/List";
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
 const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
 
 const dummydata = [
-    ["Adidas", "Adidas Voucher", "Adidas.png"],
-    ["JBL", "Speaker", "JBL.png"],
-    ["Steam", "GTA 6", "Steam.png"],
+    ["Adidas", "Adidas Voucher", <SiAdidas style={{
+        height: "150px",
+        width: "150px",
+    }}/>, "The $1000 Adidas voucher can be used in any Adidas store in Hong Kong. The voucher is valid for 1 year."],
+    ["JBL", "Speaker", <SiJbl style={{
+        height: "150px",
+        width: "150px",
+    }}/>, "The JBL speaker is a portable and waterproof speaker with a 10 hour battery life"],
+    ["Asia Miles", "Wine", <img style={{
+        height: "150px",
+        width: "150px",
+    }} src="/assets/brand/logo.png" alt="CoreUI Logo" />, "Any wine from the Asia Miles wine shop can be chosen. The wine will be delivered to the passenger's home."],
 
 ]
 const dummydata2 = [
-    ["MAC", "Cosmetic Voucher", "MAC.png"],
-    ["Business Ticket", "Japan", "logo.png"],
-    ["Swire Hotel", "Spa & Massage", "Steam.png"],
+    ["Dior", "Dior Voucher", <SiDior style={{
+        height: "150px",
+        width: "150px",
+    }}/>, "The $1000 Dior voucher can be used in any Dior store in Hong Kong. The voucher is valid for 1 year."],
+    ["Business Ticket", "Japan", <img style={{
+        height: "150px",
+        width: "150px",
+    }} src="/assets/brand/logo.png" alt="CoreUI Logo" />, "The business ticket can be used for any flight to Japan. The ticket is valid for 1 year."],
+    ["Swire Hotel", "Spa & Massage", <img style={{
+        height: "150px",
+        width: "150px",
+    }} src="/assets/brand/Swire.png" alt="CoreUI Logo" />, "The spa and massage voucher can be used in any Swire Hotel in Hong Kong. The voucher is valid for 1 year."],
 
 ]
 
@@ -97,18 +116,15 @@ const Home: NextPage = () => {
     }
     const handleSearch = async () => {
 
-        //sleep for 3 seconds
         setConfirmed(false);
         setIsLoading(true);
         setHide(false);
         setComplete(true);
 
         const id = names.filter((el) => {
-            //if no input the return the original
             if (inputText === '') {
                 return el;
             }
-            //return the item which contains the user input
             else {
                 return el.text.toUpperCase().includes(inputText.toUpperCase());
             }
@@ -122,8 +138,7 @@ const Home: NextPage = () => {
             body: JSON.stringify({ "id":  id}),
         });
         const result = await response.json();
-        console.log(result)
-        await new Promise(r => setTimeout(r, 3000)); // change this to send request
+        await new Promise(r => setTimeout(r, 3000));
         setIsLoading(false);
         if (inputText === "KARNIK RASHMI") {
             setPrizes(dummydata2);
@@ -131,38 +146,26 @@ const Home: NextPage = () => {
         else {
             setPrizes(dummydata);
         }
-
       }
       const filteredData = names.filter((el) => {
-        //if no input the return the original
         if (inputText === '') {
             return el;
         }
-        //return the item which contains the user input
         else {
             return el.text.toUpperCase().includes(inputText.toUpperCase());
         }
     })
       const inputHandler = (e:any) => {
-        //convert input text to lower case
         var lowerCase = e.target.value.toUpperCase();
         setComplete(false);
         setInputText(lowerCase);
       };
-    //   const typingHandler = () => {
-    //     setTyping(true);
-    //   }
-    //   const notTypingHandler = () => {
-    //         setTyping(false);
-    //     }
     return (
     <AdminLayout>
-        {/* make a search box in the center of the page */}
 
         <div style={{
             height:"0px",
-            // the min height is the screen height minus the navbar height
-            minHeight: "calc(100vh - 30vh)",
+            minHeight: "80vh",
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -180,7 +183,6 @@ const Home: NextPage = () => {
                 }}>
                     <Box sx={{ display: 'flex', alignItems: 'flex-end', width:"100%"}}>
 
-                    {/* <input type="text" className="form-control" placeholder="Full Name" aria-label="Recipient's username" aria-describedby="button-addon2" /> */}
                     <TextField id="outlined-basic" label="Full Name" variant="outlined" fullWidth onChange={inputHandler} value={inputText} InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -198,25 +200,15 @@ const Home: NextPage = () => {
                 </div>
                     {inputText==="" ||complete?<></> :(
                     <div
-                    //make it overlay
                     style={{
                         position: 'absolute',
                         zIndex: 1,
-                        // width: '100%',
                         height: '100%',
-                        //make it transparent
-                        // color grey
                         color: 'grey',
                     }}
                     >
-            {/* {filteredData.map((item) => (
-                <div key={item.id} >{item.text}</div>
-            ))} */}
-            {/* show 5 only */}
             {filteredData.slice(0, 5).map((item) => (
                 <Box key={item.id} sx={{
-                    // if hover then change the background color
-                    //remove background color
                     '&:hover': {
                         cursor: 'pointer',
                         color: '#00645A',
@@ -224,7 +216,6 @@ const Home: NextPage = () => {
                 }}
                 onClick={() => {
                     setInputText(item.text);
-                    setPrizes(dummydata);
                     setComplete(true);
                 }
                 }
@@ -233,7 +224,6 @@ const Home: NextPage = () => {
         </div>
                     )
         }
-                {/* <div style={{height:"120px"}}></div> */}
                 {complete||(inputText=="") ? <></> :
                 <div style={{height:"120px"}}></div>
         }
@@ -272,7 +262,6 @@ const Home: NextPage = () => {
                 }}>
                     {prizes.map((prize, index) => (
                         <div className="col-2 m-3"  style={{
-                            // if selected then change the border color
                             borderRadius: "9px",
                         }}>
                             <div className="card text-center" style={{
@@ -282,37 +271,30 @@ const Home: NextPage = () => {
                             onClick={(e)=>{
                                 e.preventDefault()
                                 handleSelectPrize(index)}
-                            // prevent default
                         }
                             >
-                                <div className="card-body">
+                                <div className="card-body" style={{
+                                        height: "370px",
+                                }}>
                                     <div style={{
                                         height: "150px",
                                         width: "150px",
                                         margin: "auto",
                                         marginBottom: "20px",
                                     }}>
-                                        <img src={'/assets/brand/'+prize[2]} height="100%" width="100%" style={{
-                                        }} alt="CoreUI Logo" />
+                                        {prize[2]}
                                         </div>
                                     <h5 className="card-title" style={{
                                         marginTop: "20px",
                                     }}>{prize[0]}</h5>
-                                    {/* <img src="/assets/brand/coreui2.png" alt="CoreUI Logo" width={180} height={35} className="me-2" /> */}
-                                    {/* make like avatar logo */}
                                     <p className="card-text">{prize[1]}</p>
+                                    <p className="card-text" style={{
+                                        fontSize: "12px",
+                                    }}>{prize[3]}</p>
                                 </div>
                             </div>
                         </div>
                     ))}
-                    {/* <div className="col-2">
-                        <div className="card text-center">
-                        <div className="card-body">
-                        <h5 className="card-title">Prize</h5>
-                        <p className="card-text">Yiorgos Avraamu</p>
-                        </div>
-                        </div>
-                    </div> */}
                 </div>}
                     {selectedPrize===-1?<></>:
                     <Button variant="primary" style={{
