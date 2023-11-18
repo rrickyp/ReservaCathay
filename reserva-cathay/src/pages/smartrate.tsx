@@ -43,52 +43,6 @@ import { useRef } from 'react';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
-const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
-
-const dummydata = [
-    ["Yiorgos Avraamu","12th November, 2023","Business Class","Rarely (12%)","Very Frequent (> than 50)","4.89"],
-    ["Avram Tarasios","14th November, 2023","First Class","Rarely (7%)","Frequent (30-40)","4.94"],
-    ["Quintin Ed","06th November, 2023","Economy Class","Frequent(67%)","Sometimes (10-20)","2.49"],
-    ["Enéas Kwadwo","11th November, 2023","Premium Economy","Rarely(9%)","Often (20-30)","3.99"],
-    ["Agapetus Tadeáš","25th October, 2023","Business Class","Sometimes(27%)","Frequent (30-40)","4.74"],
-    ["Friderik Dávid","31st October, 2023", "Premium Economy", "Often (51%)","Sometimes (10-20)","3.25"]
-]
-
-const errorlogs = [
-    ["59 mins ago.","System","[ERROR] - AI model run on 18/11/23 encountered an error. Details:..."],
-    ["3 hours ago","System","AI model run on 17/11/23 for Flight CX111. Performance metrics: Accuracy- 0.87, RMSE- 0.08"],
-    ["2 days ago.","Mark Huston","[INFO] - Edited Customer List for Flight CX288 at 05:03:00PM, 16/11/23."],
-    ["2 days ago.","Nancy Wong","[INFO] - Invited you to review Flight CX312 Customer List for Customer ID 31D."],
-]
-
-const remunerationData = [
-  {
-    optionName: 'Performance Bonus',
-    description: 'Bonus based on individual and team performance.',
-    frequency: 'Quarterly',
-    amount: '$1,000',
-  },
-  {
-    optionName: 'Sales Commission',
-    description: 'Commission for each sale made.',
-    frequency: 'Monthly',
-    amount: '$500 + 5% of sale amount',
-  },
-  {
-    optionName: 'Annual Salary',
-    description: 'Fixed salary paid annually.',
-    frequency: 'Yearly',
-    amount: '$50,000',
-  },
-  {
-    optionName: 'Profit Sharing',
-    description: 'Share of company profits distributed among employees.',
-    frequency: 'Annually',
-    amount: 'Varies based on company performance',
-  },
-  // Add more remuneration options as needed
-];
-
 interface Option {
   optionName: string;
   description: string;
@@ -229,8 +183,8 @@ const Home: NextPage = () => {
         </div>
     </div>
     <Table columns={['Passenger Data Input','Models Selected Outputs','Customers Selected Output']} data={        
-          [["Nationalty:Indian, Age:25, Gender:Male, Purpose:Tourism ","Adidas Voucher, Speaker, Wine","Wine"],
-          ["Nationalty:Chinese, Age:37, Gender:Female, Purpose:Tourism","Cosmetic Voucher, Business Ticket to Japan, Spa & Message","Business Ticket to Japan"],
+          [["Nationalty:Indian", "Age:25", "Gender:Male", "Purpose:Tourism","Interest:Shoes,Music,Partying","Adidas Voucher, Speaker, Wine","Wine"],
+          ["Nationalty:Chinese", "Age:37", "Gender:Female", "Purpose:Tourism","Interest:Beauty,Travelling,Spa","Cosmetic Voucher, Business Ticket to Japan, Spa & Message","Business Ticket to Japan"],
     ]}/>
   </AdminLayout>
 )}

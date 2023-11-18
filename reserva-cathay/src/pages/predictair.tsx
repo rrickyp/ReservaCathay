@@ -341,10 +341,6 @@ const Home: NextPage = () => {
       </div>
     </div>
     
-
-    {/* header section for model 1 */}
-
-
     <div className='row'>
       <div>
         <h6 style={{fontSize: "20px"}}>Analyze Dataset</h6>

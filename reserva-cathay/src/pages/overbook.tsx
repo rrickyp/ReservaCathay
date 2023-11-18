@@ -43,7 +43,7 @@ import React from 'react'
 import { AdminLayout } from '@layout';
 import { useRouter } from 'next/router';
 import { useState } from 'react'
-// import List from "./Components/List";
+
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
 const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -61,12 +61,7 @@ const dummydata2 = [
 
 ]
 
-const errorlogs = [
-    ["59 mins ago.","System","[ERROR] - AI model run on 18/11/23 encountered an error. Details:..."],
-    ["3 hours ago","System","AI model run on 17/11/23 for Flight CX111. Performance metrics: Accuracy- 0.87, RMSE- 0.08"],
-    ["2 days ago.","Mark Huston","[INFO] - Edited Customer List for Flight CX288 at 05:03:00PM, 16/11/23."],
-    ["2 days ago.","Nancy Wong","[INFO] - Invited you to review Flight CX312 Customer List for Customer ID 31D."],
-]
+
 
 const names = [
     { id: "510892B000014EBB", text: 'SPENCE LAWRENCE' },
@@ -107,15 +102,7 @@ const Home: NextPage = () => {
         setIsLoading(true);
         setHide(false);
         setComplete(true);
-        //         const response = await fetch('/api/overbook');
-        // //make a get request to the backend
-      
-        // const result = await response.json();
-        // console.log(result)
-        // setresult(result);
-        // make post request to backend
-        // find the corresponding ID based on the name
-        // send the ID to the backend
+
         const id = names.filter((el) => {
             //if no input the return the original
             if (inputText === '') {
