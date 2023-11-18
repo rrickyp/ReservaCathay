@@ -35,3 +35,17 @@ npm run dev
 
 ### Overbooked
   Airport Staff will input the name of the overbooked passenger and it will call Model 2 to provide 3 personalized offers, and let the customer choose 1. This data will be fed back into the system as well as the system will monitor if the user rebooks with Cathay to adjust the model and the options in the future to identify the best compensation offers to maximize customer satisfaction.
+
+
+## About PredictAirModel [Code Implementation & Hosted Website]
+
+1. Go to predictAir-main folder 
+```bash
+cd predictAir-main
+```
+
+The model is a feed-forward neural network with an input layer, a series of computational layers + dropout layers, and 1 output layer. 
+
+The model has been saved and used to host on Streamlit with a simple interface to allow the staff to test the model and get quick results for review.
+<img width="1470" alt="Screenshot 2023-11-19 at 7 43 44 AM" src="https://github.com/rrickyp/ReservaCathay/assets/86021138/393f0e65-3831-4881-b174-f5dbb42d66b0">
+
