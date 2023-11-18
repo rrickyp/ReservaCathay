@@ -45,20 +45,17 @@ const random = (min: number, max: number) => Math.floor(Math.random() * (max - m
 
 interface Props {
     data: string[][];
+    columns:string[];
   }
   
-  const DataTable: NextPage<Props> = ({ data }) => {
+  const DataTable: NextPage<Props> = ({ data , columns}) => {
     return (
       <div>
         <div className="table-responsive" style={{ marginBottom: "20px" }}>
           <table className="table border mb-0">
             <thead className="table-light fw-semibold">
               <tr className="align-middle">
-                <th className="text-center">No Shows</th>
-                <th className="text-center">Google Trends</th>
-                <th className="text-center">Third-Party Trends</th>
-                <th className="text-center">Social Trends</th>
-                <th className="text-center">Calculated Extra Tickets</th>
+                {columns.map((column,index)=><th key={index} className="text-center">{column}</th>)}
               </tr>
             </thead>
             <tbody>

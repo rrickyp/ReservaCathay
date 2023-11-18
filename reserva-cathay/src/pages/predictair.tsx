@@ -38,7 +38,7 @@ import {
 import React from 'react'
 import { AdminLayout } from '@layout';
 import dayjs from 'dayjs';
-import { FlightPredTable } from '@components/FlightPredTable';
+import  {Table}  from '@components/Table';
 
 import { DatePicker, Select } from 'antd';
 
@@ -257,84 +257,6 @@ const Home: NextPage = () => {
           </div>
         </Card>
       </div>
-
-      {/* <div className="col-sm-6 col-lg-3">
-        <Card text="white" className="mb-4" style={{backgroundColor: '#00645A'}}>
-          <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
-            <div>
-              <div className="fs-6 fw-semibold">
-                CX3284
-                <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (23.6%
-                  <FontAwesomeIcon icon={faArrowUp} fixedWidth />
-                  )
-                </span>
-              </div>
-              <div style={{fontSize: "13px"}}>05:40:00PM, Today</div>
-            </div>
-            <Dropdown align="end">
-              <Dropdown.Toggle
-                as="button"
-                bsPrefix="btn"
-                className="btn-link rounded-0 text-white shadow-none p-0"
-                id="dropdown-chart4"
-              >
-                <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Details</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">PredictAir Data</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">SmartRate Data</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
-            <Bar
-              options={{
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-                scales: {
-                  x: {
-                    grid: {
-                      display: false,
-                      drawTicks: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                  y: {
-                    grid: {
-                      display: false,
-                      drawBorder: false,
-                      drawTicks: false,
-                    },
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                },
-              }}
-              data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April'],
-                datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: 'rgba(255,255,255,.2)',
-                  borderColor: 'rgba(255,255,255,.55)',
-                  data: [78, 81, 80, 45, 34, 12, 40, 85, 65, 23, 12, 98, 34, 84, 67, 82],
-                  barPercentage: 0.6,
-                }],
-              }}
-            />
-          </div>
-        </Card>
-      </div> */}
-
       <div className="col-sm-6 col-lg-4">
         <Card text="white" className="mb-4" style={{backgroundColor: "#00645A"}}>
           <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
@@ -428,7 +350,7 @@ const Home: NextPage = () => {
         <h6 style={{fontSize: "20px"}}>Analyze Dataset</h6>
         <p style={{marginTop: "-8px", fontSize: "15px"}}>Current Training Dataset used for generating tickets.</p>
       </div>
-        <FlightPredTable data={        
+        <Table columns={['No Shows','Google Trends','Third-Party Trends','Social Trends','Calculated Extra Tickets']} data={        
           [["15","0.2","0.3","0.1","15"],
           ["8","0.5","0.5","0.5","8"],
           ["12","0.4","0.6","0.5","12"],
@@ -497,7 +419,7 @@ const Home: NextPage = () => {
                   datasets: [{
                     label: 'CX118',
                     backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    borderColor: 'rgba(13, 202, 240, 1)',
+                    borderColor: 'rgba(25, 135, 84, 1)',
                     pointHoverBackgroundColor: '#fff',
                     borderWidth: 2,
                     data: [
@@ -510,21 +432,7 @@ const Home: NextPage = () => {
                       42
                     ],
                     fill: true,
-                  }, {
-                    label: 'CX218',
-                    borderColor: 'rgba(25, 135, 84, 1)',
-                    pointHoverBackgroundColor: '#fff',
-                    borderWidth: 2,
-                    data: [
-                      25,
-                      26,
-                      88,
-                      12,
-                      11,
-                      21,
-                      11,
-                    ],
-                  }, {
+                  },  {
                     label: 'Borderline',
                     borderColor: 'rgba(220, 53, 69, 1)',
                     pointHoverBackgroundColor: '#fff',

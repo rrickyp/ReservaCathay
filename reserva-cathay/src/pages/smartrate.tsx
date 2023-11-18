@@ -38,6 +38,8 @@ import {
 import React, { useState } from 'react'
 import { AdminLayout } from '@layout';
 import { useRouter } from 'next/router';
+import { Table } from '@components/Table';
+import { useRef } from 'react';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
@@ -90,64 +92,72 @@ const remunerationData = [
 interface Option {
   optionName: string;
   description: string;
-  frequency: string;
   amount: string;
 }
 
 
 const Home: NextPage = () => {
 
+  const optionNameRef = useRef<HTMLInputElement>(null);
+  const optionDetailsRef = useRef<HTMLInputElement>(null);
+  const optionPriceRef = useRef<HTMLInputElement>(null);
+
+  const handleAddOption = () => {
+    // Retrieve values from refs
+    const optionName = optionNameRef.current?.value || '';
+    const optionDetails = optionDetailsRef.current?.value || '';
+    const optionPrice = optionPriceRef.current?.value || '';
+
+    // Create a new option object
+    const newOption = {
+      optionName: optionName,
+      description: optionDetails,
+      amount: optionPrice,
+    };
+
+    // Update the state with the new option at the beginning of the array
+    setRemunerationData((prevData) => [newOption, ...prevData]);
+  };
+
   const [remunerationData, setRemunerationData] = useState<Option[]>([
     {
       optionName: 'Performance Bonus',
       description: 'Bonus based on individual and team performance.',
-      frequency: 'Quarterly',
       amount: '$1,000',
     },
     {
       optionName: 'Sales Commission',
       description: 'Commission for each sale made.',
-      frequency: 'Monthly',
       amount: '$500 + 5% of sale amount',
     },
     {
       optionName: 'Annual Salary',
       description: 'Fixed salary paid annually.',
-      frequency: 'Yearly',
       amount: '$50,000',
     },
     {
       optionName: 'Profit Sharing',
       description: 'Share of company profits distributed among employees.',
-      frequency: 'Annually',
       amount: 'Varies based on company performance',
     },
     {
       optionName: 'Profit Sharing',
       description: 'Share of company profits distributed among employees.',
-      frequency: 'Annually',
       amount: 'Varies based on company performance',
     },
     {
       optionName: 'Profit Sharing',
       description: 'Share of company profits distributed among employees.',
-      frequency: 'Annually',
       amount: 'Varies based on company performance',
     },
     {
       optionName: 'Profit Sharing',
       description: 'Share of company profits distributed among employees.',
-      frequency: 'Annually',
       amount: 'Varies based on company performance',
     },
-    // Your initial remuneration data here
+
   ]);
 
-  // const handleRemoveOption = (rowIndex: number, optionIndex: number) => {
-  //   const updatedData = [...remunerationData];
-  //   updatedData[rowIndex].splice(optionIndex, 1);
-  //   setRemunerationData(updatedData);
-  // };
 
   const onRemoveOption = (indexToRemove) => {
     const updatedData = remunerationData.filter((_, index) => index !== indexToRemove);
@@ -158,18 +168,13 @@ const Home: NextPage = () => {
     setShowAll((prevShowAll) => !prevShowAll);
   };
 
-  const handleAddEmptyBox = () => {
-    console.log("Empty box clicked!");
-    // Add logic to add an empty box to the remunerationData if needed
-  };
 
   return (
   <AdminLayout>
-    {/* header section for model 2 */}
 
     <div>
-      <h4>AI Model 2 Info: SmartRate.AI</h4>
-      <p style={{marginTop: "-8px", color: "red"}}>Model 2 currently running for CX1851 from 11:00:00AM, Today.</p>
+      <h4>AI Model 2 Info: RewardRight.AI</h4>
+      <p style={{marginTop: "-8px"}}>Provides personalized offers to customers to elevate customer satisfaction.</p>
     </div>
 
     <div className="row mb-4">
@@ -180,7 +185,6 @@ const Home: NextPage = () => {
                 <div className="card-body">
                   <h5 className="card-title">{option.optionName}</h5>
                   <p className="card-text">{option.description}</p>
-                  <p className="card-text">Frequency: {option.frequency}</p>
                   <p className="card-text">Amount: {option.amount}</p>
                   <button
                     className="btn btn-danger"
@@ -193,421 +197,41 @@ const Home: NextPage = () => {
             </div>
           )
         )}
-        <div className="col-md-4" key="empty-box" style={{marginLeft: "-10px"}}>
-          <div className="card" style={{height: "60%", width: "100%",paddingTop: "40px"}}>
-            <div className="card-body" style={{ textAlign: "center" }}>
-              <button
-                className="btn"
-                onClick={handleAddEmptyBox}
-              >
-                +
-              </button>
-            </div>
-          </div>
-          {remunerationData.length > 5 && (
-            <div className="card" style={{height: "35%", color: "#0645A", width: "100%", paddingTop: "10px"}}>
-              <div className="card-body" style={{ textAlign: "center" }}>
-                <button
-                  className="btn"
-                  onClick={handleToggleShowAll}
-                  style={{color: "#0645A"}}
-                >
-                  {showAll ? "Show Less" : "Show More"}
-                </button>
-              </div>
-            </div>
-          )}
+        <div className="col-md-4" key="empty-box" style={{marginLeft: "-10px", marginTop:"5px"}}>
+        <p style={{marginLeft: "20px"}}>Make New Option</p>
+        <div id="adderform" style={{ height: '60%', paddingTop: '0px', marginLeft: "20px" }}>
+          <label>
+            Option Name:
+            <input  ref={optionNameRef} style={{ marginLeft: '18px' }} type="text" />
+          </label>
+          <label>
+            Option Details:
+            <input ref={optionDetailsRef} style={{ marginLeft: '10px' }} type="text" />
+          </label>
+          <label>
+            Option Price:
+            <input ref={optionPriceRef} style={{ marginLeft: '23px' }} type="text" />
+          </label>
+          <br></br>
+          <button type="button" style={{ backgroundColor: '#0645A', borderRadius: '4px', color: 'black', marginTop: "10px" }} onClick={handleAddOption}>
+            Add Option
+          </button>
+        </div>
+        {remunerationData.length > 5 && (
+        <p
+          style={{ color: "#00645A", cursor: "pointer", marginLeft: "20px", marginTop: "8px" }}
+          onClick={handleToggleShowAll}
+        >
+          {showAll ? "Show Less" : "Show More"}
+        </p>
+      )}
+
         </div>
     </div>
-    <div className='row'>
-      <div className='col-lg-8 col-md-8'>
-        <Card className="mb-4">
-          <Card.Body>
-            <div className="d-flex justify-content-between">
-              <div>
-                <h4 className="mb-0">Customer Ratings Summary (CX1851[Recent])</h4>
-                <div className="small text-black-50">Flight Schedule: 20th November, 12:00:00PM</div>
-              </div>
-              <div className="d-none d-md-block">
-                <ButtonGroup aria-label="Toolbar with buttons" className="mx-3">
-                  <input
-                    className="btn-check"
-                    id="option1"
-                    type="radio"
-                    name="options"
-                    autoComplete="off"
-                  />
-                  <label className="btn btn-outline-secondary" htmlFor="option1">Day</label>
-                  <input
-                    className="btn-check"
-                    id="option2"
-                    type="radio"
-                    name="options"
-                    autoComplete="off"
-                    defaultChecked
-                  />
-                  <label
-                    className="btn btn-outline-secondary active"
-                    htmlFor="option2"
-                  >
-                    Month
-                  </label>
-                  <input
-                    className="btn-check"
-                    id="option3"
-                    type="radio"
-                    name="options"
-                    autoComplete="off"
-                  />
-                  <label className="btn btn-outline-secondary" htmlFor="option3">Year</label>
-                </ButtonGroup>
-                {/* <Button variant="primary">
-                  <FontAwesomeIcon icon={faDownload} fixedWidth />
-                </Button> */}
-              </div>
-            </div>
-            <div
-              style={{
-                height: '300px',
-                marginTop: '40px',
-              }}
-            >
-              <Line
-                data={{
-                  labels: ['1', '2', '3', '4', '5'],
-                  datasets: [{
-                    label: 'Priority Rating',
-                    backgroundColor: '#C0DEDB',
-                    borderColor: '#00645A',
-                    pointHoverBackgroundColor: '#fff',
-                    borderWidth: 2,
-                    data: [
-                      42,
-                      43,
-                      58,
-                      139,
-                      82,
-                    ],
-                    fill: true,
-                  }, {
-                    label: 'Borderline',
-                    borderColor: 'blue',
-                    pointHoverBackgroundColor: '#fff',
-                    borderWidth: 1,
-                    borderDash: [8, 5],
-                    data: [                  
-                      45,
-                      45,
-                      45,
-                      45,
-                      45,
-                      45,
-                      45,
-                    ],
-                  }],
-                }}
-                options={{
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: {
-                      display: false,
-                    },
-                  },
-                  scales: {
-                    x: {
-                      title: {
-                        display: true,
-                        text: 'Priority Ratings for Customers', // Add your X-Axis label here
-                        color: '#333', // You can customize the color
-                      },
-                      grid: {
-                        drawOnChartArea: false,
-                      },
-                    },
-                    y: {
-                      title: {
-                        display: true,
-                        text: 'Number of Customers with Rating X', // Add your X-Axis label here
-                        color: '#333', // You can customize the color
-                      },
-                      beginAtZero: false,
-                      max: 150,
-                      ticks: {
-                        maxTicksLimit: 5,
-                        stepSize: Math.ceil(250 / 5),
-                      },
-                    },
-                  },
-                  elements: {
-                    line: {
-                      tension: 0,
-                    },
-                    point: {
-                      radius: 0,
-                      hitRadius: 10,
-                      hoverRadius: 4,
-                      hoverBorderWidth: 3,
-                    },
-                  },
-                }}
-              />
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-      <div className='col-lg-4 col-md-4'>
-            <div className="table-responsive">
-              <table className="table border mb-0">
-                <thead className="table-light fw-semibold">
-                  <tr className="align-middle">
-                    <th className="text-left">Error/Info Logs</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {errorlogs && errorlogs.map((data,index) => (
-                        <tr className="align-middle">
-                        <td>
-                            <div className="clearfix">
-                            <div className="float-start">
-                                <div className="fw" style={{fontSize: "15px"}}>{data[2]}</div>
-                            </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div className="small text-black-50">{data[0]}</div>
-                            <div className="small text-black-80">{data[1]}</div>
-                        </td>
-                        </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-      </div>
-    </div>
-
-    <div className="row">
-      <div className="col-md-12">
-        <Card>
-          <Card.Header>
-            Model Performance Summary by Flights
-          </Card.Header>
-          <Card.Body>
-            <div className="row">
-              <div className="col-sm-6">
-                <div className="row">
-                  <div className="col-6">
-                    <div className="border-start border-4 border-info px-3 mb-3">
-                      <small className="text-black-50">
-                        Customers Approved
-                      </small>
-                      <div className="fs-5 fw-semibold">2,121</div>
-                    </div>
-                  </div>
-
-                  <div className="col-6">
-                    <div className="border-start border-4 border-danger px-3 mb-3">
-                      <small className="text-black-50">
-                        Reschedules Performed
-                      </small>
-                      <div className="fs-5 fw-semibold">79</div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <hr className="mt-0" />
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX1851 (Recent)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={12}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={88}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX2118 (Today)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={18}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={84}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX1194 (Today)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={23}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={77}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX1442 (Yesterday)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={9}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={91}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX9851 (Yesterday)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={12}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={88}
-                    />
-                  </div>
-                </div>
-
-       
-             
-              </div>
-
-              <div className="col-sm-6">
-                <div className="row">
-                  <div className="col-6">
-                    <div className="border-start border-4 border-success px-3 mb-3">
-                      <small className="text-black-50">
-                        Flight Customer List Correction
-                      </small>
-                      <div className="fs-5 fw-semibold" style={{color: "red"}}>3 New Corrections</div>
-                    </div>
-                  </div>
-
-              
-
-                </div>
-
-                <hr className="mt-0" />
-
-                <div className="mb-5">
-                  <h6>Reason for Correction (Summarized):</h6>
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        Emergency
-                      </div>
-                      <div className="ms-auto fw-semibold">38.6%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="warning"
-                      now={38.6}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        Special Guest
-                      </div>
-                      <div className="ms-auto fw-semibold">22.5%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="success"
-                      now={22.5}
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        By Case Analysis
-                      </div>
-                      <div className="ms-auto fw-semibold">30.8%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="primary"
-                      now={30.8}
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        Model Error
-                      </div>
-                      <div className="ms-auto fw-semibold">8.1%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={8.1}
-                    />
-                  </div>
-                </div>
-
-               
-
-              </div>
-            </div>
-
-            <br />
-          </Card.Body>
-        </Card>
-      </div>
-    </div>
-    <div>
-      
-    </div>
+    <Table columns={['Passenger Data Input','Models Selected Outputs','Customers Selected Output']} data={        
+          [["Nationalty:Indian, Age:25, Gender:Male, Purpose:Tourism ","Adidas Voucher, Speaker, Wine","Wine"],
+          ["Nationalty:Chinese, Age:37, Gender:Female, Purpose:Tourism","Cosmetic Voucher, Business Ticket to Japan, Spa & Message","Business Ticket to Japan"],
+    ]}/>
   </AdminLayout>
 )}
 
