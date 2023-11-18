@@ -89,12 +89,12 @@ const Home: NextPage = () => {
       <div style={{marginBottom: "20px"}}></div>
     <div className="row">
     <div>
-      <h4>AI Model 1 Info: CathayPredictAir</h4>
+      <h4>PredictAir AI Model Info:</h4>
       <p style={{marginTop: "-8px"}}>Recent run: For Flight CX118 at 03:00:00AM, Today.</p>
     </div>
       <div>
         <h6 style={{fontSize: "20px"}}>Trend Analysis</h6>
-        <p style={{marginTop: "-8px", fontSize: "15px"}}>For Flight CX118.</p>
+        <p style={{marginTop: "-8px", fontSize: "15px"}}>For Flight CX118 - HKG to JFK</p>
       </div>
       <div className="col-sm-6 col-lg-4">
         <Card style={{backgroundColor: "#00645A"}} text="white" className="mb-4">
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                   )
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>Google data to analyze route flight traffic</div>
+              <div style={{fontSize: "13px"}}>Increase in searches for "HKG to NYC" in the past week.</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
@@ -195,7 +195,7 @@ const Home: NextPage = () => {
                   <FontAwesomeIcon icon={faArrowUp} fixedWidth />)
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>Third-Party Data to analyze route flight traffic.</div>
+              <div style={{fontSize: "13px"}}>Increase in NYC AirBnB and Hotel Bookings from Hong Kong</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
@@ -291,7 +291,7 @@ const Home: NextPage = () => {
                   )
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>Hashtags, etc from Social Sites</div>
+              <div style={{fontSize: "13px"}}>Increase in popularity of #NYC #NewYork #TimesSquare in Hong Kong</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
