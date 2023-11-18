@@ -58,7 +58,11 @@ const Home: NextPage = () => {
     padding: '10px',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginLeft: "20px"
+    marginLeft: "0px"
+  };
+  const handleCalculateTickets = () => {
+    // Open the link in a new tab
+    window.open("https://predictair-6zecwapboym66l2kxrh2o6.streamlit.app/", "_blank");
   };
   return (
   <AdminLayout>
@@ -479,9 +483,6 @@ const Home: NextPage = () => {
                   />
                   <label className="btn btn-outline-secondary" htmlFor="option3">Year</label>
                 </ButtonGroup>
-                {/* <Button variant="primary">
-                  <FontAwesomeIcon icon={faDownload} fixedWidth />
-                </Button> */}
               </div>
             </div>
             <div
@@ -589,273 +590,6 @@ const Home: NextPage = () => {
           </Card.Body>
         </Card>
       </div>
-      {/* <div className='col-lg-4 col-md-4'>
-            <div className="table-responsive">
-              <table className="table border mb-0">
-                <thead className="table-light fw-semibold">
-                  <tr className="align-middle">
-                    <th className="text-center">Flights</th>
-                    <th>Extra Tickets</th>
-                    <th aria-label="Action" />
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX118</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            329 Tickets - 91 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="success" now={91} />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">12</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user1"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX218</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            290 Tickets - 88 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="info" now={84} />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">18</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user2"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX917</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            294 Tickets - 72 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="warning" now={74} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">15</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user3"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX623</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            294 Tickets - 99 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="danger" now={98} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">21</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user4"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX547</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            284 Tickets - 57 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="info" now={62} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">14</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user5"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">CX711</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            302 Tickets - 71 Flights
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="success" now={74} />
-                    </td>
-                    <td>
-                    <div className="small text-black-50">Extra Tickets</div>
-                      <div className="fw-semibold">17</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user6"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-      </div> */}
     </div>
 
     <div className='row'>
@@ -864,26 +598,7 @@ const Home: NextPage = () => {
           <p style={{marginTop: "-8px", fontSize: "15px"}}>Manually calculate ticket number for a flight for testing.</p>
       </div>
       <div>
-      <label>
-        No Shows:
-        <input type="text" id="noshows" style={inputStyle} />
-      </label>
-
-      <label>
-        Google Trends:
-        <input type="text" id="gtrends" style={inputStyle} />
-      </label>
-
-      <label>
-        Third-Party Trends:
-        <input type="text" id="tptrends" style={inputStyle} />
-      </label>
-
-      <label>
-        Social Trends:
-        <input type="text" id="strends" style={inputStyle} />
-      </label>
-      <button type="button" style={buttonStyle}>
+      <button type="button" style={buttonStyle} onClick={handleCalculateTickets}>
         Calculate Tickets
       </button>
     </div>
