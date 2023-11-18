@@ -58,15 +58,15 @@ export default function Header(props: HeaderProps) {
           <HeaderProfileNav />
         </div>
       </Container>
-      <div className="header-divider border-top my-2 mx-sm-n2" />
+      {/* <div className="header-divider border-top my-2 mx-sm-n2" /> */}
       {/* use datepicker which default is today*/}
-      <DatePicker defaultValue={dayjs()} />
+      {/* <DatePicker defaultValue={dayjs()} /> */}
       {/* create selection */}
-      <Select defaultValue="CX4432" style={{ width: 120, marginLeft: 5}}>
-        <Select.Option value="CX4432">CX4432</Select.Option>
-        <Select.Option value="CX7894">CX7894</Select.Option>
-        <Select.Option value="CX3284">CX3284</Select.Option>
-      </Select>
+      {/* <Select defaultValue="CX4432" style={{ width: 120, marginLeft: 5}}>
+        <Select.Option value="CX4432">CX118</Select.Option>
+        <Select.Option value="CX7894">CX218</Select.Option>
+        <Select.Option value="CX3284">CX346</Select.Option>
+      </Select> */}
 
 
 

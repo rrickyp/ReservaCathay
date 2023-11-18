@@ -38,6 +38,7 @@ import {
 import React, { useState } from 'react'
 import { AdminLayout } from '@layout';
 import { useRouter } from 'next/router';
+import DataTable from '@components/Datasets/Datasets';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
@@ -48,8 +49,8 @@ const random = (min: number, max: number) => Math.floor(Math.random() * (max - m
 type PassengerData = [string, string, string, string, string, string];
 
 
-const Home: NextPage = () => {
-    const [dummydata,setDummyData] = useState<PassengerData[]>([
+const Table: NextPage = () => {
+    const [dummyData, setDummyData] = useState<string[][]>([
         ["Yiorgos Avraamu","12th November, 2023","Business Class","Rarely (12%)","Very Frequent (> than 50)","4.89"],
         ["Avram Tarasios","14th November, 2023","First Class","Rarely (7%)","Frequent (30-40)","4.94"],
         ["Quintin Ed","06th November, 2023","Economy Class","Frequent(67%)","Sometimes (10-20)","2.49"],
@@ -83,14 +84,7 @@ const Home: NextPage = () => {
         ["2 days ago.","Nancy Wong","[INFO] - Invited you to review Flight CX312 Customer List for Customer ID 31D."],
     ]
     
-    const handleRemoveUser = (index: number) => {
-        // Create a copy of the array
-        const updatedData = [...dummydata];
-        // Remove the user at the specified index
-        updatedData.splice(index, 1);
-        // Update the state with the modified array
-        setDummyData(updatedData);
-    };
+
     return (
         <AdminLayout>
         {/* header section for model 2 */}
@@ -100,13 +94,11 @@ const Home: NextPage = () => {
           <p style={{marginTop: "-8px", color: "red"}}>Model 2 currently running for CX1851 from 11:00:00AM, Today.</p>
         </div>
     
-        <div className="table-responsive" style={{marginBottom: "20px"}}>
+        {/* <div className="table-responsive" style={{marginBottom: "20px"}}>
             <table className="table border mb-0">
             <thead className="table-light fw-semibold">
                 <tr className="align-middle">
-                {/* <th className="text-center">
-                    <FontAwesomeIcon icon={faUsers} fixedWidth />
-                </th> */}
+
                 <th className="text-left">Flyer Name</th>
                 <th className="text-left">Ticket Class</th>
                 <th className="text-left">No-Show/Cancel</th>
@@ -145,8 +137,9 @@ const Home: NextPage = () => {
                 ))}
             </tbody>
             </table>
-        </div>
-    
+        </div> */}
+        <DataTable data={dummyData} setDummyData={setDummyData} />
+
         <div className="row">
           <div className="col-md-12">
             <Card>
@@ -414,4 +407,4 @@ const Home: NextPage = () => {
     )
 }
 
-export default Home
+export default Table

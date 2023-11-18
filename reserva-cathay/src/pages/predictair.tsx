@@ -36,28 +36,62 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
 import React from 'react'
-import { AdminLayout } from '@layout'
+import { AdminLayout } from '@layout';
+import dayjs from 'dayjs';
+import { FlightPredTable } from '@components/FlightPredTable';
+
+import { DatePicker, Select } from 'antd';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
 const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
 
-const Home: NextPage = () => (
+const Home: NextPage = () => {
+  const inputStyle = {
+    width: '100px', // Adjust the width as needed
+    marginRight: '10px', // Add margin between input boxes
+    marginLeft: '5px'
+  };
+  const buttonStyle = {
+    backgroundColor: '#00645A',
+    color: 'white',
+    padding: '10px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    marginLeft: "20px"
+  };
+  return (
   <AdminLayout>
+      <DatePicker defaultValue={dayjs()} />
+      {/* create selection */}
+      <Select defaultValue="CX4432" style={{ width: 120, marginLeft: 5}}>
+        <Select.Option value="CX4432">CX118</Select.Option>
+        <Select.Option value="CX7894">CX218</Select.Option>
+        <Select.Option value="CX3284">CX346</Select.Option>
+      </Select>
+      <div style={{marginBottom: "20px"}}></div>
     <div className="row">
-      <div className="col-sm-6 col-lg-3">
+    <div>
+      <h4>AI Model 1 Info: CathayPredictAir</h4>
+      <p style={{marginTop: "-8px"}}>Recent run: For Flight CX118 at 03:00:00AM, Today.</p>
+    </div>
+      <div>
+        <h6 style={{fontSize: "20px"}}>Trend Analysis</h6>
+        <p style={{marginTop: "-8px", fontSize: "15px"}}>For Flight CX118.</p>
+      </div>
+      <div className="col-sm-6 col-lg-4">
         <Card style={{backgroundColor: "#00645A"}} text="white" className="mb-4">
           <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
             <div>
               <div className="fs-6 fw-semibold">
-                CX4432
+                Google Trends
                 <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (12.4%
+                  (81.4%
                   <FontAwesomeIcon icon={faArrowUp} fixedWidth />
                   )
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>02:00:00PM, Today</div>
+              <div style={{fontSize: "13px"}}>Google data to analyze route flight traffic</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
@@ -76,7 +110,7 @@ const Home: NextPage = () => (
               </Dropdown.Menu>
             </Dropdown>
           </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
+          <div className="mt-3 mx-3" style={{ height: '70px' }}>
             <Line
               options={{
                 plugins: {
@@ -122,10 +156,10 @@ const Home: NextPage = () => (
               data={{
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [{
-                  label: 'My First dataset',
+                  label: 'Route Traffic',
                   backgroundColor: 'transparent',
                   borderColor: 'rgba(255,255,255,.55)',
-                  data: [65, 59, 84, 84, 51, 55, 40],
+                  data: [41, 43, 54, 55, 72, 78, 82],
                 }],
               }}
             />
@@ -133,19 +167,19 @@ const Home: NextPage = () => (
         </Card>
       </div>
 
-      <div className="col-sm-6 col-lg-3">
+      <div className="col-sm-6 col-lg-4">
         <Card text="black" className="mb-4" style={{backgroundColor: "#F1F1F1"}}>
           <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
             <div>
               <div className="fs-6 fw-semibold">
-                CX7894
+                Third-Party Trends
                 <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
                   (40.9%
                   <FontAwesomeIcon icon={faArrowUp} fixedWidth />
                   )
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>03:30:00PM, Today</div>
+              <div style={{fontSize: "13px"}}>Third-Party Data to analyze route flight traffic.</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
@@ -164,7 +198,7 @@ const Home: NextPage = () => (
               </Dropdown.Menu>
             </Dropdown>
           </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
+          <div className="mt-3 mx-3" style={{ height: '70px' }}>
             <Line
               options={{
                 plugins: {
@@ -220,7 +254,7 @@ const Home: NextPage = () => (
         </Card>
       </div>
 
-      <div className="col-sm-6 col-lg-3">
+      {/* <div className="col-sm-6 col-lg-3">
         <Card text="white" className="mb-4" style={{backgroundColor: '#00645A'}}>
           <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
             <div>
@@ -295,21 +329,21 @@ const Home: NextPage = () => (
             />
           </div>
         </Card>
-      </div>
+      </div> */}
 
-      <div className="col-sm-6 col-lg-3">
-        <Card text="black" className="mb-4" style={{backgroundColor: "#F1F1F1"}}>
+      <div className="col-sm-6 col-lg-4">
+        <Card text="white" className="mb-4" style={{backgroundColor: "#00645A"}}>
           <Card.Body className="pb-0 d-flex justify-content-between align-items-start">
             <div>
               <div className="fs-6 fw-semibold">
-                CX8921
+                Social Trends
                 <span className="ms-2 fw-normal" style={{fontSize: "13px"}}>
-                  (84.7%
+                  (62.7%
                   <FontAwesomeIcon icon={faArrowUp} fixedWidth />
                   )
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>09:40:00PM, Today</div>
+              <div style={{fontSize: "13px"}}>Hashtags, etc from Social Sites</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
@@ -328,7 +362,7 @@ const Home: NextPage = () => (
               </Dropdown.Menu>
             </Dropdown>
           </Card.Body>
-          <div className="mt-3 mx-3" style={{ height: '40px' }}>
+          <div className="mt-3 mx-3" style={{ height: '70px' }}>
             <Line
               options={{
                 plugins: {
@@ -360,12 +394,20 @@ const Home: NextPage = () => (
               data={{
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [{
-                  label: 'My First dataset',
-                  backgroundColor: '#E4E1E0 ',
-                  borderColor: 'black',
-                  data: [78, 81, 80, 45, 34, 12, 40],
+                  label: 'Instagram',
+                  backgroundColor: '#C0DEDB ',
+                  borderColor: 'white',
+                  data: [34, 17, 80, 45, 34, 12, 84],
                   fill: true,
-                }],
+                },
+                {
+                  label: 'Facebook',
+                  backgroundColor: '#f1f1f1 ',
+                  borderColor: 'black',
+                  data: [21, 32, 44, 62, 71, 55, 76],
+                  fill: true,
+                }
+              ],
               }}
             />
           </div>
@@ -376,13 +418,27 @@ const Home: NextPage = () => (
 
     {/* header section for model 1 */}
 
-    <div>
-      <h4>AI Model 1 Info: CathayPredictAir</h4>
-      <p style={{marginTop: "-8px"}}>Recent run: For Flight CX2118 at 03:00:00AM, Today.</p>
+
+    <div className='row'>
+      <div>
+        <h6 style={{fontSize: "20px"}}>Analyze Dataset</h6>
+        <p style={{marginTop: "-8px", fontSize: "15px"}}>Current Training Dataset used for generating tickets.</p>
+      </div>
+        <FlightPredTable data={        
+          [["15","0.2","0.3","0.1","15"],
+          ["8","0.5","0.5","0.5","8"],
+          ["12","0.4","0.6","0.5","12"],
+          ["5","0.8", "0.5", "0.5","2"],
+          ["11","0.8","0.7","0.5","7"]
+          ]} />
     </div>
 
     <div className='row'>
-      <div className='col-lg-8 col-md-8'>
+      <div>
+        <h6 style={{fontSize: "20px"}}>Recent Result</h6>
+        <p style={{marginTop: "-8px", fontSize: "15px"}}>Analyze results for recent model run for: Flight CX118</p>
+      </div>
+      <div className='col-lg-12 col-md-12'>
         <Card className="mb-4">
           <Card.Body>
             <div className="d-flex justify-content-between">
@@ -531,58 +587,9 @@ const Home: NextPage = () => (
               />
             </div>
           </Card.Body>
-          {/* <Card.Footer>
-            <div className="row row-cols-1 row-cols-md-5 text-center">
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Visits</div>
-                <div className="fw-semibold">29.703 Users (40%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="success"
-                  now={40}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Unique</div>
-                <div className="fw-semibold">24.093 Users (20%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="info"
-                  now={20}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Page views</div>
-                <div className="fw-semibold">78.706 Views (60%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="warning"
-                  now={60}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">New Users</div>
-                <div className="fw-semibold">22.123 Users (80%)</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="danger"
-                  now={80}
-                />
-              </div>
-              <div className="col mb-sm-2 mb-0">
-                <div className="text-black-50">Bounce Rate</div>
-                <div className="fw-semibold">40.15%</div>
-                <ProgressBar
-                  className="progress-thin mt-2"
-                  variant="primary"
-                  now={40}
-                />
-              </div>
-            </div>
-          </Card.Footer> */}
         </Card>
       </div>
-      <div className='col-lg-4 col-md-4'>
+      {/* <div className='col-lg-4 col-md-4'>
             <div className="table-responsive">
               <table className="table border mb-0">
                 <thead className="table-light fw-semibold">
@@ -848,831 +855,42 @@ const Home: NextPage = () => (
                 </tbody>
               </table>
             </div>
+      </div> */}
+    </div>
+
+    <div className='row'>
+      <div>
+          <h6 style={{fontSize: "20px"}}>Calculate Ticket Number</h6>
+          <p style={{marginTop: "-8px", fontSize: "15px"}}>Manually calculate ticket number for a flight for testing.</p>
       </div>
+      <div>
+      <label>
+        No Shows:
+        <input type="text" id="noshows" style={inputStyle} />
+      </label>
+
+      <label>
+        Google Trends:
+        <input type="text" id="gtrends" style={inputStyle} />
+      </label>
+
+      <label>
+        Third-Party Trends:
+        <input type="text" id="tptrends" style={inputStyle} />
+      </label>
+
+      <label>
+        Social Trends:
+        <input type="text" id="strends" style={inputStyle} />
+      </label>
+      <button type="button" style={buttonStyle}>
+        Calculate Tickets
+      </button>
+    </div>
     </div>
 
 
-    {/* <div className="row">
-      <div className="col-sm-6 col-lg-4">
-        <Card
-          className="mb-4"
-          style={{ '--bs-card-cap-bg': '#3b5998' } as React.CSSProperties}
-        >
-          <Card.Header className="d-flex justify-content-center align-items-center">
-            <FontAwesomeIcon
-              icon={faFacebookF}
-              fixedWidth
-              size="3x"
-              className="my-4 text-white"
-            />
-          </Card.Header>
-          <Card.Body>
-            <div className="row text-center">
-              <div className="col">
-                <div className="fs-5 fw-semibold">89k</div>
-                <div className="text-uppercase text-black-50 small">friends</div>
-              </div>
-              <div className="vr p-0" />
-              <div className="col">
-                <div className="fs-5 fw-semibold">459</div>
-                <div className="text-uppercase text-black-50 small">feeds</div>
-              </div>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-4">
-        <Card
-          className="mb-4"
-          style={{ '--bs-card-cap-bg': '#00aced' } as React.CSSProperties}
-        >
-          <Card.Header className="d-flex justify-content-center align-items-center">
-            <FontAwesomeIcon
-              icon={faTwitter}
-              fixedWidth
-              size="3x"
-              className="my-4 text-white"
-            />
-          </Card.Header>
-          <Card.Body>
-            <div className="row text-center">
-              <div className="col">
-                <div className="fs-5 fw-semibold">973k</div>
-                <div className="text-uppercase text-black-50 small">followers</div>
-              </div>
-              <div className="vr p-0" />
-              <div className="col">
-                <div className="fs-5 fw-semibold">1.792</div>
-                <div className="text-uppercase text-black-50 small">tweets</div>
-              </div>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-
-      <div className="col-sm-6 col-lg-4">
-        <Card
-          className="mb-4"
-          style={{ '--bs-card-cap-bg': '#4875b4' } as React.CSSProperties}
-        >
-          <Card.Header className="d-flex justify-content-center align-items-center">
-            <FontAwesomeIcon
-              icon={faLinkedinIn}
-              fixedWidth
-              size="3x"
-              className="my-4 text-white"
-            />
-          </Card.Header>
-          <Card.Body>
-            <div className="row text-center">
-              <div className="col">
-                <div className="fs-5 fw-semibold">500+</div>
-                <div className="text-uppercase text-black-50 small">contacts</div>
-              </div>
-              <div className="vr p-0" />
-              <div className="col">
-                <div className="fs-5 fw-semibold">292</div>
-                <div className="text-uppercase text-black-50 small">feeds</div>
-              </div>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-
-    </div> */}
-
-    <div>
-      <h4>AI Model 2 Info: SmartRateAI</h4>
-      <p style={{marginTop: "-8px"}}>Recent run: For Flight CX1851A at 04:30:00AM, Today.</p>
-    </div>
-    <div className="row">
-      <div className="col-md-12">
-        <Card>
-          <Card.Header>
-            Model Performance Summary by Flights
-          </Card.Header>
-          <Card.Body>
-            <div className="row">
-              <div className="col-sm-6">
-                <div className="row">
-                  <div className="col-6">
-                    <div className="border-start border-4 border-info px-3 mb-3">
-                      <small className="text-black-50">
-                        Customers Approved
-                      </small>
-                      <div className="fs-5 fw-semibold">2,121</div>
-                    </div>
-                  </div>
-
-                  <div className="col-6">
-                    <div className="border-start border-4 border-danger px-3 mb-3">
-                      <small className="text-black-50">
-                        Reschedules Performed
-                      </small>
-                      <div className="fs-5 fw-semibold">79</div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <hr className="mt-0" />
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX1851 (Recent)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={12}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={88}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX2118 (Today)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={18}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={84}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX1194 (Today)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={23}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={77}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX1442 (Yesterday)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={9}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={91}
-                    />
-                  </div>
-                </div>
-
-                <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      CX9851 (Yesterday)
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="danger"
-                      now={12}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={88}
-                    />
-                  </div>
-                </div>
-
-                {/* <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      Saturday
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="primary"
-                      now={53}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="danger"
-                      now={82}
-                    />
-                  </div>
-                </div> */}
-
-                {/* <div className="row mb-4 align-items-center">
-                  <div className="col-3">
-                    <span className="text-black-50 small">
-                      Sunday
-                    </span>
-                  </div>
-                  <div className="col">
-                    <ProgressBar
-                      className="progress-thin mb-1"
-                      variant="primary"
-                      now={9}
-                    />
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="danger"
-                      now={69}
-                    />
-                  </div>
-                </div> */}
-              </div>
-
-              <div className="col-sm-6">
-                <div className="row">
-                  <div className="col-6">
-                    <div className="border-start border-4 border-success px-3 mb-3">
-                      <small className="text-black-50">
-                        Flight Customer List Correction
-                      </small>
-                      <div className="fs-5 fw-semibold" style={{color: "red"}}>3 New Corrections</div>
-                    </div>
-                  </div>
-
-                  {/* <div className="col-6">
-                    <div className="border-start border-4 border-success px-3 mb-3">
-                      <small className="text-black-50">
-                        Organic
-                      </small>
-                      <div className="fs-5 fw-semibold">49,123</div>
-                    </div>
-                  </div> */}
-
-                </div>
-
-                <hr className="mt-0" />
-
-                <div className="mb-5">
-                  <h6>Reason for Correction (Summarized):</h6>
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        Emergency
-                      </div>
-                      <div className="ms-auto fw-semibold">38.6%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="warning"
-                      now={38.6}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        Special Guest
-                      </div>
-                      <div className="ms-auto fw-semibold">22.5%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="success"
-                      now={22.5}
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        By Case Analysis
-                      </div>
-                      <div className="ms-auto fw-semibold">30.8%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="primary"
-                      now={30.8}
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex mb-1">
-                      <div>
-                        Model Error
-                      </div>
-                      <div className="ms-auto fw-semibold">8.1%</div>
-                    </div>
-                    <ProgressBar
-                      className="progress-thin"
-                      variant="info"
-                      now={8.1}
-                    />
-                  </div>
-                </div>
-
-
-
-                {/* <div className="mb-3">
-                  <div className="d-flex mb-1">
-                    <div>
-                      <FontAwesomeIcon className="me-2" icon={faFacebookF} fixedWidth />
-                      Facebook
-                    </div>
-                    <div className="ms-auto fw-semibold me-2">51.223</div>
-                    <div className="text-black-50 small">(15%)</div>
-                  </div>
-                  <ProgressBar
-                    className="progress-thin"
-                    variant="success"
-                    now={15}
-                  />
-                </div> */}
-
-                {/* <div className="mb-3">
-                  <div className="d-flex mb-1">
-                    <div>
-                      <FontAwesomeIcon className="me-2" icon={faTwitter} fixedWidth />
-                      Twitter
-                    </div>
-                    <div className="ms-auto fw-semibold me-2">37.564</div>
-                    <div className="text-black-50 small">(11%)</div>
-                  </div>
-                  <ProgressBar
-                    className="progress-thin"
-                    variant="success"
-                    now={11}
-                  />
-                </div> */}
-
-                {/* <div className="mb-3">
-                  <div className="d-flex mb-1">
-                    <div>
-                      <FontAwesomeIcon className="me-2" icon={faLinkedinIn} fixedWidth />
-                      LinkedIn
-                    </div>
-                    <div className="ms-auto fw-semibold me-2">27.319</div>
-                    <div className="text-black-50 small">(8%)</div>
-                  </div>
-                  <ProgressBar
-                    className="progress-thin"
-                    variant="success"
-                    now={8}
-                  />
-                </div> */}
-              </div>
-            </div>
-
-            <br />
-
-            {/* <div className="table-responsive">
-              <table className="table border mb-0">
-                <thead className="table-light fw-semibold">
-                  <tr className="align-middle">
-                    <th className="text-center">
-                      <FontAwesomeIcon icon={faUsers} fixedWidth />
-                    </th>
-                    <th>User</th>
-                    <th>Usage</th>
-                    <th className="text-center">Payment Method</th>
-                    <th>Activity</th>
-                    <th aria-label="Action" />
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="align-middle">
-                    <td className="text-center">
-                      <div className="avatar avatar-md d-inline-flex position-relative">
-                        <Image
-                          fill
-                          className="rounded-circle"
-                          src="/assets/img/avatars/1.jpg"
-                          alt="user@email.com"
-                        />
-                        <span
-                          className="avatar-status position-absolute d-block bottom-0 end-0 bg-success rounded-circle border border-white"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>Yiorgos Avraamu</div>
-                      <div className="small text-black-50">
-                        <span>New</span>
-                        {' '}
-                        | Registered: Jan 1, 2020
-                      </div>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">50%</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            Jun 11, 2020 - Jul 10, 2020
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="success" now={50} />
-                    </td>
-                    <td className="text-center">
-                      <FontAwesomeIcon icon={faCcAmex} size="lg" fixedWidth />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Last login</div>
-                      <div className="fw-semibold">10 sec ago</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user1"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td className="text-center">
-                      <div className="avatar avatar-md d-inline-flex position-relative">
-                        <Image
-                          fill
-                          className="rounded-circle"
-                          src="/assets/img/avatars/2.jpg"
-                          alt="user@email.com"
-                        />
-                        <span
-                          className="avatar-status position-absolute d-block bottom-0 end-0 bg-danger rounded-circle border border-white"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>Avram Tarasios</div>
-                      <div className="small text-black-50">
-                        <span>Recurring</span>
-                        {' '}
-                        | Registered: Jan 1, 2020
-                      </div>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">10%</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            Jun 11, 2020 - Jul 10, 2020
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="info" now={10} />
-                    </td>
-                    <td className="text-center">
-                      <FontAwesomeIcon icon={faCcVisa} size="lg" fixedWidth />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Last login</div>
-                      <div className="fw-semibold">5 minutes ago</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user2"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td className="text-center">
-                      <div className="avatar avatar-md d-inline-flex position-relative">
-                        <Image
-                          fill
-                          className="rounded-circle"
-                          src="/assets/img/avatars/3.jpg"
-                          alt="user@email.com"
-                        />
-                        <span
-                          className="avatar-status position-absolute d-block bottom-0 end-0 bg-warning rounded-circle border border-white"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>Quintin Ed</div>
-                      <div className="small text-black-50">
-                        <span>New</span>
-                        {' '}
-                        | Registered: Jan 1, 2020
-                      </div>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">74%</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            Jun 11, 2020 - Jul 10, 2020
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="warning" now={74} />
-                    </td>
-                    <td className="text-center">
-                      <FontAwesomeIcon icon={faCcStripe} size="lg" fixedWidth />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Last login</div>
-                      <div className="fw-semibold">1 hour ago</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user3"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td className="text-center">
-                      <div className="avatar avatar-md d-inline-flex position-relative">
-                        <Image
-                          fill
-                          className="rounded-circle"
-                          src="/assets/img/avatars/4.jpg"
-                          alt="user@email.com"
-                        />
-                        <span
-                          className="avatar-status position-absolute d-block bottom-0 end-0 bg-secondary rounded-circle border border-white"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>Enéas Kwadwo</div>
-                      <div className="small text-black-50">
-                        <span>New</span>
-                        {' '}
-                        | Registered: Jan 1, 2020
-                      </div>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">98%</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            Jun 11, 2020 - Jul 10, 2020
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="danger" now={98} />
-                    </td>
-                    <td className="text-center">
-                      <FontAwesomeIcon icon={faCcPaypal} size="lg" fixedWidth />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Last login</div>
-                      <div className="fw-semibold">Last month</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user4"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td className="text-center">
-                      <div className="avatar avatar-md d-inline-flex position-relative">
-                        <Image
-                          fill
-                          className="rounded-circle"
-                          src="/assets/img/avatars/5.jpg"
-                          alt="user@email.com"
-                        />
-                        <span
-                          className="avatar-status position-absolute d-block bottom-0 end-0 bg-success rounded-circle border border-white"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>Agapetus Tadeáš</div>
-                      <div className="small text-black-50">
-                        <span>New</span>
-                        {' '}
-                        | Registered: Jan 1, 2020
-                      </div>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">22%</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            Jun 11, 2020 - Jul 10, 2020
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="info" now={22} />
-                    </td>
-                    <td className="text-center">
-                      <FontAwesomeIcon icon={faCcApplePay} size="lg" fixedWidth />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Last login</div>
-                      <div className="fw-semibold">Last week</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user5"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                  <tr className="align-middle">
-                    <td className="text-center">
-                      <div className="avatar avatar-md d-inline-flex position-relative">
-                        <Image
-                          fill
-                          className="rounded-circle"
-                          src="/assets/img/avatars/6.jpg"
-                          alt="user@email.com"
-                        />
-                        <span
-                          className="avatar-status position-absolute d-block bottom-0 end-0 bg-danger rounded-circle border border-white"
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div>Friderik Dávid</div>
-                      <div className="small text-black-50">
-                        <span>New</span>
-                        {' '}
-                        | Registered: Jan 1, 2020
-                      </div>
-                    </td>
-                    <td>
-                      <div className="clearfix">
-                        <div className="float-start">
-                          <div className="fw-semibold">43%</div>
-                        </div>
-                        <div className="float-end">
-                          <small className="text-black-50">
-                            Jun 11, 2020 - Jul 10, 2020
-                          </small>
-                        </div>
-                      </div>
-                      <ProgressBar className="progress-thin" variant="success" now={43} />
-                    </td>
-                    <td className="text-center">
-                      <FontAwesomeIcon icon={faCcAmex} size="lg" fixedWidth />
-                    </td>
-                    <td>
-                      <div className="small text-black-50">Last login</div>
-                      <div className="fw-semibold">Yesterday</div>
-                    </td>
-                    <td>
-                      <Dropdown align="end">
-                        <Dropdown.Toggle
-                          as="button"
-                          bsPrefix="btn"
-                          className="btn-link rounded-0 text-black-50 shadow-none p-0"
-                          id="action-user6"
-                        >
-                          <FontAwesomeIcon fixedWidth icon={faEllipsisVertical} />
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">Info</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">Edit</Dropdown.Item>
-                          <Dropdown.Item
-                            className="text-danger"
-                            href="#/action-3"
-                          >
-                            Delete
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> */}
-          </Card.Body>
-        </Card>
-      </div>
-    </div>
   </AdminLayout>
-)
+)}
 
 export default Home

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -35,7 +35,7 @@ import {
   faLinkedinIn,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
-import React from 'react'
+import React, { useState } from 'react'
 import { AdminLayout } from '@layout';
 import { useRouter } from 'next/router';
 
@@ -59,9 +59,111 @@ const errorlogs = [
     ["2 days ago.","Nancy Wong","[INFO] - Invited you to review Flight CX312 Customer List for Customer ID 31D."],
 ]
 
+const remunerationData = [
+  {
+    optionName: 'Performance Bonus',
+    description: 'Bonus based on individual and team performance.',
+    frequency: 'Quarterly',
+    amount: '$1,000',
+  },
+  {
+    optionName: 'Sales Commission',
+    description: 'Commission for each sale made.',
+    frequency: 'Monthly',
+    amount: '$500 + 5% of sale amount',
+  },
+  {
+    optionName: 'Annual Salary',
+    description: 'Fixed salary paid annually.',
+    frequency: 'Yearly',
+    amount: '$50,000',
+  },
+  {
+    optionName: 'Profit Sharing',
+    description: 'Share of company profits distributed among employees.',
+    frequency: 'Annually',
+    amount: 'Varies based on company performance',
+  },
+  // Add more remuneration options as needed
+];
+
+interface Option {
+  optionName: string;
+  description: string;
+  frequency: string;
+  amount: string;
+}
 
 
-const Home: NextPage = () => (
+const Home: NextPage = () => {
+
+  const [remunerationData, setRemunerationData] = useState<Option[]>([
+    {
+      optionName: 'Performance Bonus',
+      description: 'Bonus based on individual and team performance.',
+      frequency: 'Quarterly',
+      amount: '$1,000',
+    },
+    {
+      optionName: 'Sales Commission',
+      description: 'Commission for each sale made.',
+      frequency: 'Monthly',
+      amount: '$500 + 5% of sale amount',
+    },
+    {
+      optionName: 'Annual Salary',
+      description: 'Fixed salary paid annually.',
+      frequency: 'Yearly',
+      amount: '$50,000',
+    },
+    {
+      optionName: 'Profit Sharing',
+      description: 'Share of company profits distributed among employees.',
+      frequency: 'Annually',
+      amount: 'Varies based on company performance',
+    },
+    {
+      optionName: 'Profit Sharing',
+      description: 'Share of company profits distributed among employees.',
+      frequency: 'Annually',
+      amount: 'Varies based on company performance',
+    },
+    {
+      optionName: 'Profit Sharing',
+      description: 'Share of company profits distributed among employees.',
+      frequency: 'Annually',
+      amount: 'Varies based on company performance',
+    },
+    {
+      optionName: 'Profit Sharing',
+      description: 'Share of company profits distributed among employees.',
+      frequency: 'Annually',
+      amount: 'Varies based on company performance',
+    },
+    // Your initial remuneration data here
+  ]);
+
+  // const handleRemoveOption = (rowIndex: number, optionIndex: number) => {
+  //   const updatedData = [...remunerationData];
+  //   updatedData[rowIndex].splice(optionIndex, 1);
+  //   setRemunerationData(updatedData);
+  // };
+
+  const onRemoveOption = (indexToRemove) => {
+    const updatedData = remunerationData.filter((_, index) => index !== indexToRemove);
+    setRemunerationData(updatedData);
+  };
+  const [showAll, setShowAll] = useState<boolean>(false);
+  const handleToggleShowAll = () => {
+    setShowAll((prevShowAll) => !prevShowAll);
+  };
+
+  const handleAddEmptyBox = () => {
+    console.log("Empty box clicked!");
+    // Add logic to add an empty box to the remunerationData if needed
+  };
+
+  return (
   <AdminLayout>
     {/* header section for model 2 */}
 
@@ -70,44 +172,60 @@ const Home: NextPage = () => (
       <p style={{marginTop: "-8px", color: "red"}}>Model 2 currently running for CX1851 from 11:00:00AM, Today.</p>
     </div>
 
-    <div className="table-responsive" style={{marginBottom: "20px"}}>
-        <table className="table border mb-0">
-        <thead className="table-light fw-semibold">
-            <tr className="align-middle">
-            {/* <th className="text-center">
-                <FontAwesomeIcon icon={faUsers} fixedWidth />
-            </th> */}
-            <th className="text-left">Flyer Name</th>
-            <th className="text-left">Ticket Class</th>
-            <th className="text-left">No-Show/Cancel</th>
-            <th className="text-left">Flight Freq.</th>
-            <th className="text-left">Priority Points (/5)</th>
-            </tr>
-        </thead>
-        <tbody>
-            {dummydata.map((data, index) => (
-            <tr className="align-middle" key={index}>
-                <td>
-                <div>{data[0]}</div>
-                <div className="small text-black-50">
-                    <span></span>Booked on: {data[1]}
+    <div className="row mb-4">
+        {(showAll ? remunerationData : remunerationData.slice(0, 5)).map(
+          (option, index) => (
+            <div className="col-md-4" key={index} style={{marginBottom: "10px", marginLeft: "-10px"}}>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{option.optionName}</h5>
+                  <p className="card-text">{option.description}</p>
+                  <p className="card-text">Frequency: {option.frequency}</p>
+                  <p className="card-text">Amount: {option.amount}</p>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => onRemoveOption(index)}
+                  >
+                    Remove
+                  </button>
                 </div>
-                </td>
-                <td>
-                <div className="clearfix">
-                    <div className="float-start">
-                    <div className="fw-semibold">{data[2]}</div>
-                    </div>
-                </div>
-                </td>
-                <td className="text-left">{data[3]}</td>
-                <td className="text-left">{data[4]}</td>
-                <td>{data[5]}</td>
-            </tr>
-            ))}
-        </tbody>
-        </table>
+              </div>
+            </div>
+          )
+        )}
+        <div className="col-md-4" key="empty-box" style={{marginLeft: "-10px"}}>
+          <div className="card" style={{height: "60%", width: "100%",paddingTop: "40px"}}>
+            <div className="card-body" style={{ textAlign: "center" }}>
+              <button
+                className="btn"
+                onClick={handleAddEmptyBox}
+              >
+                +
+              </button>
+            </div>
+          </div>
+          {remunerationData.length > 5 && (
+            <div className="card" style={{height: "35%", color: "#0645A", width: "100%", paddingTop: "10px"}}>
+              <div className="card-body" style={{ textAlign: "center" }}>
+                <button
+                  className="btn"
+                  onClick={handleToggleShowAll}
+                  style={{color: "#0645A"}}
+                >
+                  {showAll ? "Show Less" : "Show More"}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
     </div>
+
+
+
+
+
+
+
 
     <div className='row'>
       <div className='col-lg-8 col-md-8'>
@@ -1002,6 +1120,6 @@ const Home: NextPage = () => (
       </div>
     </div>
   </AdminLayout>
-)
+)}
 
 export default Home
