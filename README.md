@@ -26,7 +26,7 @@ npm run dev
   
 
 ### Model 2: RewardRight.AI
-<img alt="Screenshot 2023-11-19 at 8 06 38 AM" src="https://github.com/rrickyp/ReservaCathay/assets/86021138/032194a7-8938-4dd7-998e-2099b386b812" width="500" />
+<img alt="Screenshot 2023-11-19 at 8 06 38 AM" src="reserva-cathay/public/assets/screenshots/Screenshot 2023-11-19 at 8.06.38 AM" width="500" />
 
   RewardRight.AI personalizes the compensation provided to overbooked passengers to reduce customer dissatisfaction by grouping factors such as nationality, age, purpose of trips to web-scrape more information about users from similar user patterns online. These are used to identify common trends for that demographic of people.  This data, including data already present from Cathay website on the passenger, and the current available user options, will be fed into our own GPT model for determining the best-personalized compensation offers that the flyer will be most pleased to receive.
   
@@ -48,5 +48,5 @@ The model is a feed-forward neural network with an input layer, a series of comp
 
 The model has been saved and used to host on Streamlit with a simple interface to allow the staff to test the model and get quick results for review.
 <br></br>
-<img width="1470" alt="Screenshot 2023-11-19 at 7 43 44 AM" src="https://github.com/rrickyp/ReservaCathay/assets/86021138/393f0e65-3831-4881-b174-f5dbb42d66b0">
+<img width="1470" alt="Screenshot 2023-11-19 at 7 43 44 AM" src="reserva-cathay/public/assets/screenshots/last.png">
 
