@@ -62,24 +62,8 @@ interface Props {
               {data.map((rowData, index) => (
                 <tr className="align-middle" key={index}>
                   <td className="text-center">
-                    {/* Disabled Dropdown for row[0] */}
-                    <select className="form-select">
-                        <option key={index} value={index.toString()}>
-                          {rowData[0]}
-                        </option>
-                        <option key={index} value={index.toString()}>
-                          {rowData[1]}
-                        </option>
-                        <option key={index} value={index.toString()}>
-                          {rowData[2]}
-                        </option>
-                        <option key={index} value={index.toString()}>
-                          {rowData[3]}
-                        </option>
-                        <option key={index} value={index.toString()}>
-                          {rowData[4]}
-                        </option>
-                    </select>
+                    {rowData[0]}, {rowData[1]}, {rowData[2]}...
+
                   </td>
                   <td className='text-center'>
                     <div>{rowData[5]}</div>
