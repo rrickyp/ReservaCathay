@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                   )
                 </span>
               </div>
-              <div style={{fontSize: "13px"}}>Increase in searches for "HKG to NYC" in the past week.</div>
+              <div style={{fontSize: "13px"}}>Increase in searches for "HKG to NYC" in the past week in Hong Kong.</div>
             </div>
             <Dropdown align="end">
               <Dropdown.Toggle
