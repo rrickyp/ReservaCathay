@@ -26,7 +26,7 @@ npm run dev
   
 
 ### Model 2: RewardRight.AI
-<img alt="Screenshot 2023-11-19 at 8 06 38 AM" src="reserva-cathay/public/assets/screenshots/Screenshot 2023-11-19 at 8.06.38 AM" width="500" />
+<img alt="Screenshot 2023-11-19 at 8 06 38 AM" src="reserva-cathay/public/assets/screenshots/reward11.png" width="500" />
 
   RewardRight.AI personalizes the compensation provided to overbooked passengers to reduce customer dissatisfaction by grouping factors such as nationality, age, purpose of trips to web-scrape more information about users from similar user patterns online. These are used to identify common trends for that demographic of people.  This data, including data already present from Cathay website on the passenger, and the current available user options, will be fed into our own GPT model for determining the best-personalized compensation offers that the flyer will be most pleased to receive.
   
